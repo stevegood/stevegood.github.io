@@ -6,8 +6,8 @@
     <atom:link href="https://stevegood.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Wed, 17 Aug 2016 17:35:45 -0500</pubDate>
-    <lastBuildDate>Wed, 17 Aug 2016 17:35:45 -0500</lastBuildDate>
+    <pubDate>Wed, 17 Aug 2016 17:40:12 -0500</pubDate>
+    <lastBuildDate>Wed, 17 Aug 2016 17:40:12 -0500</lastBuildDate>
 
     <item>
       <title>Moving to GitHub Pages</title>
@@ -16,6 +16,15 @@
       <guid isPermaLink="false">blog/2016/08/17/moving-to-github-pages.html</guid>
       	<description>
 	&lt;h1&gt;Ghost + Pivotal CF = &amp;lt;3&lt;/h1&gt;&lt;p&gt;Last year I moved my blog to Ghost and hosted it in Pivotal CF. This has been great so far but I&apos;m starting to get twitchy about paying for an application to be running in PCF when I rarely update anything. This is my response to that concern.&lt;/p&gt;&lt;h2&gt;GitHub Pages&lt;/h2&gt;&lt;p&gt;There are a number of advantages to using GitHub Pages over a blogging application but for the most part I really like the price. &lt;strong&gt;Free&lt;/strong&gt;. Sure, static content loads faster than generated content, and GitHub is pretty amazing but in reality, this is going to be more work when writing blog posts than using Ghost (or any other blogging platform for that matter). But that price! Also, I think the workflow of writing blog posts going forward will look a whole lot more like my typical software development with the added step of generating the static content (I&apos;m using JBake).&lt;/p&gt;&lt;h2&gt;Moar Posts?&lt;/h2&gt;&lt;p&gt;No, probably not yet. I have a whole lot going on in my life right now that is taking up the vast majority of my time. However, I will certainly feel better about not blogging as often since it won&apos;t be costing my anything (_have I harped of the cost enough yet?_).&lt;/p&gt;&lt;p&gt;More to come later (and I hope to figure out how to get comments added).&lt;/p&gt;
+	</description>
+    </item>
+    <item>
+      <title>So You Want to Learn to Program?</title>
+      <link>https://stevegood.github.io/blog/2015/9/11/so-you-want-to-learn-to-program.html</link>
+      <pubDate>Fri, 11 Sep 2015 00:00:00 -0500</pubDate>
+      <guid isPermaLink="false">blog/2015/9/11/so-you-want-to-learn-to-program.html</guid>
+      	<description>
+	&lt;p&gt;I get asked all the time &lt;a href=&quot;http://twitch.tv/ExtremeModeration/&quot;&gt;on my stream&lt;/a&gt; which language someone should learn when they first get started. I typically start by asking what the end goal is. Want to build games? Websites? Desktop applications? The answer to that question will lead new developers in totally different directions. I recently found a pretty good &lt;a href=&quot;http://carlcheo.com/startcoding&quot;&gt;infographic&lt;/a&gt; to help young developers choose a language that best suites their goals.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://carlcheo.com/wp-content/uploads/2014/12/which-programming-language-should-i-learn-first-infographic.png&quot;&gt;&lt;img src=&quot;http://carlcheo.com/wp-content/uploads/2014/12/which-programming-language-should-i-learn-first-infographic.png&quot; alt=&quot;http://carlcheo.com/wp-content/uploads/2014/12/which-programming-language-should-i-learn-first-infographic.png&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
 	</description>
     </item>
 
