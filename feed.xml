@@ -6,117 +6,16 @@
     <atom:link href="https://stevegood.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Wed, 17 Aug 2016 17:00:59 -0500</pubDate>
-    <lastBuildDate>Wed, 17 Aug 2016 17:00:59 -0500</lastBuildDate>
+    <pubDate>Wed, 17 Aug 2016 17:12:42 -0500</pubDate>
+    <lastBuildDate>Wed, 17 Aug 2016 17:12:42 -0500</lastBuildDate>
 
     <item>
-      <title>Fourth Post</title>
-      <link>https://stevegood.github.io/blog/2013/fourth-post.html</link>
-      <pubDate>Thu, 17 Oct 2013 00:00:00 -0500</pubDate>
-      <guid isPermaLink="false">blog/2013/fourth-post.html</guid>
+      <title>Moving to GitHub Pages</title>
+      <link>https://stevegood.github.io/blog/2016/08/17/moving-to-github-pages.html</link>
+      <pubDate>Wed, 17 Aug 2016 00:00:00 -0500</pubDate>
+      <guid isPermaLink="false">blog/2016/08/17/moving-to-github-pages.html</guid>
       	<description>
-	&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel diam purus. Curabitur ut nisi lacus.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://example.org&quot; class=&quot;bare&quot;&gt;http://example.org&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://example.org&quot;&gt;Example.org&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Nam id nisl quam. Donec a lorem sit amet libero pretium vulputate vel ut purus. Suspendisse leo arcu,
-mattis et imperdiet luctus, pulvinar vitae mi. Quisque fermentum sollicitudin feugiat. Mauris nec leo
-ligula. Vestibulum tristique odio ut risus ultricies a hendrerit quam iaculis. Duis tempor elit sit amet
-ligula vehicula et iaculis sem placerat. Fusce dictum, metus at volutpat lacinia, elit massa auctor risus,
-id auctor arcu enim eu augue. Donec ultrices turpis in mi imperdiet ac venenatis sapien sodales. In
-consequat imperdiet nunc quis bibendum. Nulla semper, erat quis ornare tristique, lectus massa posuere
-libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.&lt;/p&gt;
-&lt;/div&gt;
-	</description>
-    </item>
-    <item>
-      <title>Third Post</title>
-      <link>https://stevegood.github.io/blog/2013/third-post.html</link>
-      <pubDate>Thu, 26 Sep 2013 00:00:00 -0500</pubDate>
-      <guid isPermaLink="false">blog/2013/third-post.html</guid>
-      	<description>
-	&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel diam purus. Curabitur ut nisi lacus.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://example.org&quot; class=&quot;bare&quot;&gt;http://example.org&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://example.org&quot;&gt;Example.org&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Nam id nisl quam. Donec a lorem sit amet libero pretium vulputate vel ut purus. Suspendisse leo arcu,
-mattis et imperdiet luctus, pulvinar vitae mi. Quisque fermentum sollicitudin feugiat. Mauris nec leo
-ligula. Vestibulum tristique odio ut risus ultricies a hendrerit quam iaculis. Duis tempor elit sit amet
-ligula vehicula et iaculis sem placerat. Fusce dictum, metus at volutpat lacinia, elit massa auctor risus,
-id auctor arcu enim eu augue. Donec ultrices turpis in mi imperdiet ac venenatis sapien sodales. In
-consequat imperdiet nunc quis bibendum. Nulla semper, erat quis ornare tristique, lectus massa posuere
-libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.&lt;/p&gt;
-&lt;/div&gt;
-	</description>
-    </item>
-    <item>
-      <title>Second Post</title>
-      <link>https://stevegood.github.io/blog/2013/second-post.html</link>
-      <pubDate>Sun, 25 Aug 2013 00:00:00 -0500</pubDate>
-      <guid isPermaLink="false">blog/2013/second-post.html</guid>
-      	<description>
-	&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel diam purus. Curabitur ut nisi lacus.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://example.org&quot;&gt;http://example.org&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://example.org&quot;&gt;Example.org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;Nam id nisl quam. Donec a lorem sit amet libero pretium vulputate vel ut purus. Suspendisse leo arcu,&lt;br/&gt;mattis et imperdiet luctus, pulvinar vitae mi. Quisque fermentum sollicitudin feugiat. Mauris nec leo&lt;br/&gt;ligula. Vestibulum tristique odio ut risus ultricies a hendrerit quam iaculis. Duis tempor elit sit amet&lt;br/&gt;ligula vehicula et iaculis sem placerat. Fusce dictum, metus at volutpat lacinia, elit massa auctor risus,&lt;br/&gt;id auctor arcu enim eu augue. Donec ultrices turpis in mi imperdiet ac venenatis sapien sodales. In&lt;br/&gt;consequat imperdiet nunc quis bibendum. Nulla semper, erat quis ornare tristique, lectus massa posuere&lt;br/&gt;libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.&lt;/p&gt;
-	</description>
-    </item>
-    <item>
-      <title>First Post</title>
-      <link>https://stevegood.github.io/blog/2013/first-post.html</link>
-      <pubDate>Wed, 24 Jul 2013 00:00:00 -0500</pubDate>
-      <guid isPermaLink="false">blog/2013/first-post.html</guid>
-      	<description>
-	
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel diam purus. Curabitur ut nisi lacus.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://example.org&quot;&gt;http://example.org&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://example.org&quot;&gt;Example.org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Nam id nisl quam. Donec a lorem sit amet libero pretium vulputate vel ut purus. Suspendisse leo arcu, 
-mattis et imperdiet luctus, pulvinar vitae mi. Quisque fermentum sollicitudin feugiat. Mauris nec leo 
-ligula. Vestibulum tristique odio ut risus ultricies a hendrerit quam iaculis. Duis tempor elit sit amet 
-ligula vehicula et iaculis sem placerat. Fusce dictum, metus at volutpat lacinia, elit massa auctor risus, 
-id auctor arcu enim eu augue. Donec ultrices turpis in mi imperdiet ac venenatis sapien sodales.&lt;/p&gt; 
-
-&lt;pre class=&quot;prettyprint&quot;&gt;
-&lt;code&gt;
-package org.jbake;
-
-public class Oven {
-	public static void main(String[] args) {
-		System.out.print(&quot;Baking!&quot;);
-  }
-}
-&lt;/code&gt;
-&lt;/pre&gt;
-
-&lt;p&gt;In consequat imperdiet nunc quis bibendum. Nulla semper, erat quis ornare tristique, lectus massa posuere 
-libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.&lt;/p&gt;
-
+	&lt;h1&gt;Ghost + Pivotal CF = &amp;lt;3&lt;/h1&gt;&lt;p&gt;Last year I moved my blog to Ghost and hosted it in Pivotal CF. This has been great so far but I&apos;m starting to get twitchy about paying for an application to be running in PCF when I rarely update anything. This is my response to that concern.&lt;/p&gt;&lt;h2&gt;GitHub Pages&lt;/h2&gt;&lt;p&gt;There are a number of advantages to using GitHub Pages over a blogging application but for the most part I really like the price. &lt;strong&gt;Free&lt;/strong&gt;. Sure, static content loads faster than generated content, and GitHub is pretty amazing but in reality, this is going to be more work when writing blog posts than using Ghost (or any other blogging platform for that matter). But that price! Also, I think the workflow of writing blog posts going forward will look a whole lot more like my typical software development with the added step of generating the static content (I&apos;m using JBake).&lt;/p&gt;&lt;h2&gt;Moar Posts?&lt;/h2&gt;&lt;p&gt;No, probably not yet. I have a whole lot going on in my life right now that is taking up the vast majority of my time. However, I will certainly feel better about not blogging as often since it won&apos;t be costing my anything (_have I harped of the cost enough yet?_).&lt;/p&gt;&lt;p&gt;More to come later (and I hope to figure out how to get comments added).&lt;/p&gt;
 	</description>
     </item>
 
