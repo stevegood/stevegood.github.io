@@ -15,14 +15,9 @@
     <script src="<#if (content.rootpath)??>${content.rootpath}<#else></#if>js/bootstrap.min.js"></script>
     <script src="<#if (content.rootpath)??>${content.rootpath}<#else></#if>js/prettify.js"></script>
 		<script type="text/javascript">
-			console.log("Initializing...");
 			!(function($){
-				console.log('jQuery loaded...');
 				$(document).on('ready', function(){
-					console.log('Document ready!');
-					$("a[href^='http']:not([href^='https://" + window.location.host + "'])").each(function(){
-						$(this).attr('parent','_blank');
-					})
+					$("a[href^='http']:not([href^='https://" + window.location.host + "'])").attr('target','_blank');
 				});
 			}(jQuery));
 		</script>

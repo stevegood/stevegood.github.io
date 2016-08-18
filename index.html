@@ -46,6 +46,7 @@
           <ul class="nav navbar-nav">
             <li><a href="">Home</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="https://github.com/stevegood/" target="_blank">GitHub</a></li>
             <li><a href="feed.xml">Subscribe</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -84,14 +85,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/prettify.js"></script>
 		<script type="text/javascript">
-			console.log("Initializing...");
 			!(function($){
-				console.log('jQuery loaded...');
 				$(document).on('ready', function(){
-					console.log('Document ready!');
-					$("a[href^='http']:not([href^='https://" + window.location.host + "'])").each(function(){
-						$(this).attr('parent','_blank');
-					})
+					$("a[href^='http']:not([href^='https://" + window.location.host + "'])").attr('target','_blank');
 				});
 			}(jQuery));
 		</script>
