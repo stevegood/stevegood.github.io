@@ -2,14 +2,18 @@
 
 	<#include "menu.ftl">
 
-	<div class="page-header">
-		<h1>Blog</h1>
-	</div>
+	<!-- <div class="jumbotron">
+		<strong>Steve Good</strong> is a software developer and photographer.  Connect with him on social media!
+	</div> -->
+
 	<#list posts as post>
   		<#if (post.status == "published")>
-  			<a href="${post.uri}"><h1><#escape x as x?xml>${post.title}</#escape></h1></a>
-  			<p>${post.date?string("MMMM dd, yyyy")}</p>
-  			<p>${post.body}</p>
+  			<div class="well page">
+					<a href="${post.uri}"><h1><#escape x as x?xml>${post.title}</#escape></h1></a>
+	  			<p>${post.date?string("MMMM dd, yyyy")}</p>
+					<hr />
+	  			<p>${post.body}</p>
+  			</div>
   		</#if>
   	</#list>
 
