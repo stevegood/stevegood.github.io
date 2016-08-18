@@ -7,7 +7,7 @@ if [ $# -eq 0 ]
 fi
 
 echo "Invoking JBake"
-jbake -b
+~/.sdkman/candidates/jbake/current/bin/jbake -b
 
 echo "Committing the files..."
 git add .
