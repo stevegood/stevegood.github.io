@@ -58,3 +58,7 @@ body {
 .navbar {
   font-weight: bold;
 }
+
+a, a:hover {
+  color: #03a9f4;
+}
