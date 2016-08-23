@@ -1,5 +1,5 @@
 title=Simple URL Monitor Using Groovy and Twilio
-date=2015-08-23
+date=2012-08-23
 type=post
 tags=programming
 status=published
