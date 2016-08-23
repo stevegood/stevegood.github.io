@@ -6,8 +6,8 @@
     <atom:link href="https://stevegood.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Tue, 23 Aug 2016 05:36:57 +0000</pubDate>
-    <lastBuildDate>Tue, 23 Aug 2016 05:36:57 +0000</lastBuildDate>
+    <pubDate>Tue, 23 Aug 2016 05:44:02 +0000</pubDate>
+    <lastBuildDate>Tue, 23 Aug 2016 05:44:02 +0000</lastBuildDate>
 
     <item>
       <title>Moving to GitHub Pages</title>
@@ -172,9 +172,9 @@ doPing( options )
     </item>
     <item>
       <title>Moving Forward and a Tiny Planet</title>
-      <link>https://stevegood.github.io/2015/06/04/moving-forward-and-a-tiny-planet.html</link>
-      <pubDate>Thu, 4 Jun 2015 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">2015/06/04/moving-forward-and-a-tiny-planet.html</guid>
+      <link>https://stevegood.github.io/2013/06/04/moving-forward-and-a-tiny-planet.html</link>
+      <pubDate>Tue, 4 Jun 2013 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">2013/06/04/moving-forward-and-a-tiny-planet.html</guid>
       	<description>
 	&lt;h2&gt;Moving Forward&lt;/h2&gt;&lt;p&gt;For the last two years I have been a full time contractor at &lt;a href=&quot;http://kainexus.com&quot;&gt;KaiNexus&lt;/a&gt; serving as their Principal Architect. During this that time I made new friends and had the opportunity to work on a project that could leave a great positive mark on the world. However, as with all things, this chapter has come to a close. Starting this month I will be transitioning from KaiNexus to Cisco Systems. While I&apos;m not a big fan of the corporate machine, the team I&apos;ll be working with is small and has that startup feel about it. I&apos;ll still be working with Flex but I&apos;ll be focusing much less on the server-side of the application, which is a big shift for me.&lt;/p&gt;&lt;p&gt;In addition to a change in career, I&apos;ve moved my site, as you may have noticed. Last May &lt;a href=&quot;http://stevegood.org/blog/2012/5/24/grails-and-bootstrap-and-jelastic-oh-my&quot;&gt;I moved my site from Posterous to a custom built Grails application running on Jelastic&lt;/a&gt;. A few months later I moved the application again from &lt;a href=&quot;http://jelastic.com&quot;&gt;Jelastic&lt;/a&gt; to &lt;a href=&quot;http://appfog.com&quot;&gt;AppFog&lt;/a&gt; as an experiment. Sadly, that experiment never quite met my expectations. During my time hosting the application on AppFog I experienced many outages, difficulties in deployment and had to make significant changes to the app just to get it to run. This was a very different experience from Jelastic where deployment was a no brainer, was always up and required no code changes to make it compatible. I&apos;ve raved about Jelastic in the past and I still do, however, as my time becomes more limited and I spend more free time persuing photography I find myself letting the Grails app I built fall behind. I just don&apos;t have the drive to maintain it anymore. As a result, I&apos;ve moved my site off of my home brew application and over to Squarespace. So far, the experience has been pleasant. My only issue has been with migrating comments (if you know how I can do this please let me know!) and as a result I&apos;ve left some posts off the new site.&lt;/p&gt;&lt;p&gt;So far June has been an exciting month of change. I&apos;m looking forward to seeing what else is on the horizon!&lt;/p&gt;&lt;h2&gt;A Tiny Planet&lt;/h2&gt;&lt;p&gt;A few weeks ago I decided to try my hand at a quirky form of panoramic photography. The process involves shooting a series of overlapping photos 360 degrees around a fixed point, just like with a typical panorama. The fun part comes into play when you take the stitched photos into Photoshop and turn them into a sphere. The result is a tiny planet with giant landscape and buildings. After shooting a few of these it seems like the most successful shots are of scenes with little skyline clutter and only a few tall points of interest. Here&apos;s one of my favorites of a simple parking lot in Fort Worth.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/208899/blog/parking-lot-pano-1.jpg&quot;&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/208899/blog/parking-lot-pano-1.jpg&quot; alt=&quot;https://dl.dropboxusercontent.com/u/208899/blog/parking-lot-pano-1.jpg&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
 	</description>
