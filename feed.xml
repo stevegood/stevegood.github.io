@@ -6,8 +6,8 @@
     <atom:link href="https://stevegood.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Tue, 23 Aug 2016 05:44:02 +0000</pubDate>
-    <lastBuildDate>Tue, 23 Aug 2016 05:44:02 +0000</lastBuildDate>
+    <pubDate>Tue, 23 Aug 2016 05:46:49 +0000</pubDate>
+    <lastBuildDate>Tue, 23 Aug 2016 05:46:49 +0000</lastBuildDate>
 
     <item>
       <title>Moving to GitHub Pages</title>
@@ -29,9 +29,9 @@
     </item>
     <item>
       <title>Simple URL Monitor Using Groovy and Twilio</title>
-      <link>https://stevegood.github.io/2015/08/23/simple-url-monitor-using-groovy-and-twilio.html</link>
+      <link>https://stevegood.github.io/2012/08/23/simple-url-monitor-using-groovy-and-twilio.html</link>
       <pubDate>Sun, 23 Aug 2015 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">2015/08/23/simple-url-monitor-using-groovy-and-twilio.html</guid>
+      <guid isPermaLink="false">2012/08/23/simple-url-monitor-using-groovy-and-twilio.html</guid>
       	<description>
 	&lt;p&gt;Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.&lt;/p&gt;&lt;p&gt;To start, I set some minimal requirements for myself.&lt;/p&gt;
 &lt;ul&gt;
