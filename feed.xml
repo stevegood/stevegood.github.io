@@ -6,8 +6,8 @@
     <atom:link href="https://stevegood.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Tue, 27 Sep 2016 17:22:55 -0700</pubDate>
-    <lastBuildDate>Tue, 27 Sep 2016 17:22:55 -0700</lastBuildDate>
+    <pubDate>Tue, 27 Sep 2016 23:20:29 -0700</pubDate>
+    <lastBuildDate>Tue, 27 Sep 2016 23:20:29 -0700</lastBuildDate>
 
     <item>
       <title>Using Groovy to write Atlassian plugins</title>
