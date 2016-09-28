@@ -6,13 +6,96 @@
     <atom:link href="https://stevegood.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Wed, 24 Aug 2016 18:14:23 -0500</pubDate>
-    <lastBuildDate>Wed, 24 Aug 2016 18:14:23 -0500</lastBuildDate>
+    <pubDate>Tue, 27 Sep 2016 17:12:48 -0700</pubDate>
+    <lastBuildDate>Tue, 27 Sep 2016 17:12:48 -0700</lastBuildDate>
 
+    <item>
+      <title>Using Groovy to write Atlassian plugins</title>
+      <link>https://stevegood.github.io/2016/09/27/using-groovy-to-write-atlassian-plugins.html</link>
+      <pubDate>Tue, 27 Sep 2016 00:00:00 -0700</pubDate>
+      <guid isPermaLink="false">2016/09/27/using-groovy-to-write-atlassian-plugins.html</guid>
+      	<description>
+	&lt;p&gt;Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation). But using Java can be overly verbose and less flexible than some other more modern languages. There are examples of writing plugins using &lt;a href=&quot;https://bitbucket.org/ssaasen/atlassian-scala-example-plugin&quot;&gt;Scala&lt;/a&gt; and &lt;a href=&quot;https://bitbucket.org/ssaasen/atlassian-jruby-example-plugin&quot;&gt;JRuby&lt;/a&gt; out there but documentation for using &lt;a href=&quot;http://groovy-lang.org/&quot;&gt;Groovy&lt;/a&gt; seems to be a bit of a black hole. Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.&lt;/p&gt;&lt;h2&gt;Getting started&lt;/h2&gt;&lt;p&gt;Before you start you need to make sure that you have &lt;a href=&quot;https://developer.atlassian.com/docs/getting-started/set-up-the-atlassian-plugin-sdk-and-build-a-project&quot;&gt;installed the Atlassian SDK&lt;/a&gt;. Once you have that installed we can create a new JIRA plugin. These steps should work fine for RefApp plugins as well as Confluence.&lt;/p&gt;&lt;h3&gt;Create a project&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Run &lt;code&gt;atlas-create-jira-plugin&lt;/code&gt; from the command line&lt;/li&gt;
+  &lt;li&gt;groupId: &lt;em&gt;rocks.stevegood.jira&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;artifactId: &lt;em&gt;my-groovy-plugin&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;version: &lt;em&gt;1.0.0-SNAPSHOT&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;package: &lt;em&gt;rocks.stevegood.jira&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Y: &lt;em&gt;y&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h3&gt;Modify your &lt;code&gt;pom.xml&lt;/code&gt;&lt;/h3&gt;&lt;h4&gt;Add the &lt;em&gt;groovy-all&lt;/em&gt; dependency to your plugin&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;...
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.codehaus.groovy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;groovy-all&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;${groovy.version}&amp;lt;/version&amp;gt;
+    &amp;lt;scope&amp;gt;compile&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;h4&gt;Add the GMavenPlus plugin to your &lt;em&gt;plugins&lt;/em&gt; block&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;...
+&amp;lt;plugin&amp;gt;
+    &amp;lt;groupId&amp;gt;org.codehaus.gmavenplus&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;gmavenplus-plugin&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.5&amp;lt;/version&amp;gt;
+    &amp;lt;executions&amp;gt;
+        &amp;lt;execution&amp;gt;
+            &amp;lt;goals&amp;gt;
+                &amp;lt;goal&amp;gt;execute&amp;lt;/goal&amp;gt;
+                &amp;lt;goal&amp;gt;compile&amp;lt;/goal&amp;gt;
+                &amp;lt;goal&amp;gt;testCompile&amp;lt;/goal&amp;gt;
+            &amp;lt;/goals&amp;gt;
+        &amp;lt;/execution&amp;gt;
+    &amp;lt;/executions&amp;gt;
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.codehaus.groovy&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;groovy-all&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${groovy.version}&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+&amp;lt;/plugin&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;Update the instructions for the &lt;em&gt;maven-jira-plugin&lt;/em&gt; plugin&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;...
+&amp;lt;instructions&amp;gt;
+  ...
+  &amp;lt;Import-Package&amp;gt;
+    ...
+    *;version=&amp;quot;0&amp;quot;;resolution:=&amp;quot;optional&amp;quot;,
+    ...
+  &amp;lt;/Import-Package&amp;gt;
+
+  ...
+
+  &amp;lt;DynamicImport-Package&amp;gt;
+    *
+  &amp;lt;/DynamicImport-Package&amp;gt;
+  ...
+&amp;lt;/instructions&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;h4&gt;Add the &lt;em&gt;groovy.version&lt;/em&gt; property to the &lt;em&gt;properties&lt;/em&gt; block&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;...
+&amp;lt;groovy.version&amp;gt;2.4.7&amp;lt;/groovy.version&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;Update your project structure&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Rename &lt;em&gt;src/main/**java**&lt;/em&gt; to &lt;em&gt;src/main/**groovy**&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Rename &lt;em&gt;src/test/**java**&lt;/em&gt; to &lt;em&gt;src/test/**groovy**&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Rename &lt;strong&gt;all&lt;/strong&gt; _*.java_ files to _*.groovy_
+&lt;/li&gt;
+  &lt;li&gt;Fix the &lt;em&gt;MyPluginComponentImpl.groovy&lt;/em&gt; file (around line 11) so that it compiles&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+  &lt;li&gt;Change &lt;code&gt;@ExportAsService({MyPluginComponent.class})&lt;/code&gt; to &lt;code&gt;@ExportAsService([MyPluginComponent])&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h3&gt;Clean up code and run the plugin&lt;/h3&gt;&lt;p&gt;You can now go through your files are remove things like semicolons, parenthesis, and &lt;em&gt;public&lt;/em&gt; scope declarations. At this point you should be able to start your plugin with &lt;code&gt;atlas-run&lt;/code&gt;. If it doesn&apos;t work, verify that you have made all of the changes listed above and try again. You might also try cleaning your project first to avoid lingering artifacts with &lt;code&gt;atlas-clean&lt;/code&gt;. You can also checkout the &lt;a href=&quot;https://github.com/stevegood/my-groovy-plugin&quot;&gt;example source code&lt;/a&gt; if you get stuck.&lt;/p&gt;&lt;p&gt;Once you have JIRA running you should be able to see that your plugin has loaded from the &lt;a href=&quot;http://localhost:2990/jira/plugins/servlet/upm&quot;&gt;Manage Addons&lt;/a&gt; screen. You should see something similar to the this:&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/images/manage-addons-my-groovy-plugin.png&quot; alt=&quot;manage-addons-my-groovy-plugin&quot;&quot;/&gt;&lt;/p&gt;
+	</description>
+    </item>
     <item>
       <title>Moving to GitHub Pages</title>
       <link>https://stevegood.github.io/2016/08/17/moving-to-github-pages.html</link>
-      <pubDate>Wed, 17 Aug 2016 00:00:00 -0500</pubDate>
+      <pubDate>Wed, 17 Aug 2016 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2016/08/17/moving-to-github-pages.html</guid>
       	<description>
 	&lt;h1&gt;Ghost + Pivotal CF = &amp;lt;3&lt;/h1&gt;&lt;p&gt;Last year I moved my blog to &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost&lt;/a&gt; and hosted it in &lt;a href=&quot;https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry?utm_source=menu&amp;utm_medium=link&amp;utm_campaign=gettingstartedwithpcf&quot;&gt;Pivotal CF&lt;/a&gt;. This has been great so far but I&apos;m starting to get twitchy about paying for an application to be running in PCF when I rarely update anything. This is my response to that concern.&lt;/p&gt;&lt;h2&gt;GitHub Pages&lt;/h2&gt;&lt;p&gt;There are a number of advantages to using GitHub Pages over a blogging application but for the most part I really like the price. &lt;strong&gt;Free&lt;/strong&gt;. Sure, static content loads faster than generated content, and GitHub is pretty amazing but in reality, this is going to be more work when writing blog posts than using Ghost (or any other blogging platform for that matter). But that price! Also, I think the workflow of writing blog posts going forward will look a whole lot more like my typical software development with the added step of generating the static content (I&apos;m using &lt;a href=&quot;http://jbake.org/&quot;&gt;JBake&lt;/a&gt;).&lt;/p&gt;&lt;h2&gt;Moar Posts?&lt;/h2&gt;&lt;p&gt;No, probably not yet. I have a whole lot going on in my life right now that is taking up the vast majority of my time. However, I will certainly feel better about not blogging as often since it won&apos;t be costing my anything ( &lt;em&gt;have I harped of the cost enough yet?&lt;/em&gt; ).&lt;/p&gt;&lt;p&gt;More to come later (and I hope to figure out how to get comments added).&lt;/p&gt;
@@ -21,7 +104,7 @@
     <item>
       <title>So You Want to Learn to Program?</title>
       <link>https://stevegood.github.io/2015/9/11/so-you-want-to-learn-to-program.html</link>
-      <pubDate>Fri, 11 Sep 2015 00:00:00 -0500</pubDate>
+      <pubDate>Fri, 11 Sep 2015 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2015/9/11/so-you-want-to-learn-to-program.html</guid>
       	<description>
 	&lt;p&gt;I get asked all the time &lt;a href=&quot;http://twitch.tv/ExtremeModeration/&quot;&gt;on my stream&lt;/a&gt; which language someone should learn when they first get started. I typically start by asking what the end goal is. Want to build games? Websites? Desktop applications? The answer to that question will lead new developers in totally different directions. I recently found a pretty good &lt;a href=&quot;http://carlcheo.com/startcoding&quot;&gt;infographic&lt;/a&gt; to help young developers choose a language that best suites their goals.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://carlcheo.com/wp-content/uploads/2014/12/which-programming-language-should-i-learn-first-infographic.png&quot;&gt;&lt;img src=&quot;http://carlcheo.com/wp-content/uploads/2014/12/which-programming-language-should-i-learn-first-infographic.png&quot; alt=&quot;http://carlcheo.com/wp-content/uploads/2014/12/which-programming-language-should-i-learn-first-infographic.png&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
@@ -30,7 +113,7 @@
     <item>
       <title>Moving Forward and a Tiny Planet</title>
       <link>https://stevegood.github.io/2013/06/04/moving-forward-and-a-tiny-planet.html</link>
-      <pubDate>Tue, 4 Jun 2013 00:00:00 -0500</pubDate>
+      <pubDate>Tue, 4 Jun 2013 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2013/06/04/moving-forward-and-a-tiny-planet.html</guid>
       	<description>
 	&lt;h2&gt;Moving Forward&lt;/h2&gt;&lt;p&gt;For the last two years I have been a full time contractor at &lt;a href=&quot;http://kainexus.com&quot;&gt;KaiNexus&lt;/a&gt; serving as their Principal Architect. During this that time I made new friends and had the opportunity to work on a project that could leave a great positive mark on the world. However, as with all things, this chapter has come to a close. Starting this month I will be transitioning from KaiNexus to Cisco Systems. While I&apos;m not a big fan of the corporate machine, the team I&apos;ll be working with is small and has that startup feel about it. I&apos;ll still be working with Flex but I&apos;ll be focusing much less on the server-side of the application, which is a big shift for me.&lt;/p&gt;&lt;p&gt;In addition to a change in career, I&apos;ve moved my site, as you may have noticed. Last May &lt;a href=&quot;http://stevegood.org/blog/2012/5/24/grails-and-bootstrap-and-jelastic-oh-my&quot;&gt;I moved my site from Posterous to a custom built Grails application running on Jelastic&lt;/a&gt;. A few months later I moved the application again from &lt;a href=&quot;http://jelastic.com&quot;&gt;Jelastic&lt;/a&gt; to &lt;a href=&quot;http://appfog.com&quot;&gt;AppFog&lt;/a&gt; as an experiment. Sadly, that experiment never quite met my expectations. During my time hosting the application on AppFog I experienced many outages, difficulties in deployment and had to make significant changes to the app just to get it to run. This was a very different experience from Jelastic where deployment was a no brainer, was always up and required no code changes to make it compatible. I&apos;ve raved about Jelastic in the past and I still do, however, as my time becomes more limited and I spend more free time persuing photography I find myself letting the Grails app I built fall behind. I just don&apos;t have the drive to maintain it anymore. As a result, I&apos;ve moved my site off of my home brew application and over to Squarespace. So far, the experience has been pleasant. My only issue has been with migrating comments (if you know how I can do this please let me know!) and as a result I&apos;ve left some posts off the new site.&lt;/p&gt;&lt;p&gt;So far June has been an exciting month of change. I&apos;m looking forward to seeing what else is on the horizon!&lt;/p&gt;&lt;h2&gt;A Tiny Planet&lt;/h2&gt;&lt;p&gt;A few weeks ago I decided to try my hand at a quirky form of panoramic photography. The process involves shooting a series of overlapping photos 360 degrees around a fixed point, just like with a typical panorama. The fun part comes into play when you take the stitched photos into Photoshop and turn them into a sphere. The result is a tiny planet with giant landscape and buildings. After shooting a few of these it seems like the most successful shots are of scenes with little skyline clutter and only a few tall points of interest. Here&apos;s one of my favorites of a simple parking lot in Fort Worth.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/208899/blog/parking-lot-pano-1.jpg&quot;&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/208899/blog/parking-lot-pano-1.jpg&quot; alt=&quot;https://dl.dropboxusercontent.com/u/208899/blog/parking-lot-pano-1.jpg&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
@@ -39,7 +122,7 @@
     <item>
       <title>Simple URL Monitor Using Groovy and Twilio</title>
       <link>https://stevegood.github.io/2012/08/23/simple-url-monitor-using-groovy-and-twilio.html</link>
-      <pubDate>Thu, 23 Aug 2012 00:00:00 -0500</pubDate>
+      <pubDate>Thu, 23 Aug 2012 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2012/08/23/simple-url-monitor-using-groovy-and-twilio.html</guid>
       	<description>
 	&lt;p&gt;Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.&lt;/p&gt;&lt;p&gt;To start, I set some minimal requirements for myself.&lt;/p&gt;
@@ -182,7 +265,7 @@ doPing( options )
     <item>
       <title>New KaiNexus Video</title>
       <link>https://stevegood.github.io/2012/07/24/new-kainexus-video.html</link>
-      <pubDate>Tue, 24 Jul 2012 00:00:00 -0500</pubDate>
+      <pubDate>Tue, 24 Jul 2012 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2012/07/24/new-kainexus-video.html</guid>
       	<description>
 	&lt;p&gt;&lt;a href=&quot;http://kainexus.com&quot;&gt;KaiNexus&lt;/a&gt;, the company where I am the Principal Architect, has just released our latest &quot;Explainer&quot; video. The new video includes 3 use cases and a bunch of screen grabs from the actual software. This video is quite exciting as I think it really shows what kinds of problems our software solves. Check it out!&lt;/p&gt;&lt;p&gt;&lt;iframe width=&quot;420&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/POKSpu5-8NU&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
@@ -191,7 +274,7 @@ doPing( options )
     <item>
       <title>The Way Out</title>
       <link>https://stevegood.github.io/2012/07/05/the-way-out.html</link>
-      <pubDate>Thu, 5 Jul 2012 00:00:00 -0500</pubDate>
+      <pubDate>Thu, 5 Jul 2012 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2012/07/05/the-way-out.html</guid>
       	<description>
 	&lt;h2&gt;SmugMug Grails Plugin Update&lt;/h2&gt;&lt;p&gt;A few weeks ago I mentioned that I was building a Grails plugin that aimed to wrap the SmugMug API. As of today, I am about 80% done with the coding and will be giving it a through test phase and creating docs soon. Once done, it will be available through the normal Grails plugin channels and be completely open source.&lt;/p&gt;&lt;h2&gt;The Way Out&lt;/h2&gt;&lt;p&gt;Sometimes it is so easy to ignore the things around us that we see on a daily basis. The subject of this photo was no exception. This is a walkway at the office complex where I work 5 days a week and I never once thought to bring my camera and shoot it. A few days ago I decided to change that. Here are the results.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/208899/blog/DSC_4944_5_6-Edit-Edit-L.jpg&quot;&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/208899/blog/DSC_4944_5_6-Edit-Edit-L.jpg&quot; alt=&quot;https://dl.dropboxusercontent.com/u/208899/blog/DSC_4944_5_6-Edit-Edit-L.jpg&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
@@ -200,7 +283,7 @@ doPing( options )
     <item>
       <title>The Hallway</title>
       <link>https://stevegood.github.io/2012/06/26/the-hallway.html</link>
-      <pubDate>Tue, 26 Jun 2012 00:00:00 -0500</pubDate>
+      <pubDate>Tue, 26 Jun 2012 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2012/06/26/the-hallway.html</guid>
       	<description>
 	&lt;h2&gt;Living in a Hospital&lt;/h2&gt;&lt;p&gt;I&apos;ve spent the last five days pretty much living at UT Southwestern Medical Center. My step daughter has been unable to eat more than a few bites of food without throwing up for about three months. After many tests and even a surgery to remove her gall bladder, doctors finally admitted her to the hospital for observation and even more tests. As a result, my wife and I have spent nearly the whole time living I the hospital room with her. I ask, for those comfortable with it, for prayers for her health and that the doctors would be able find the problem and come up with a solution.&lt;/p&gt;&lt;h2&gt;The Hallway&lt;/h2&gt;&lt;p&gt;There is a really interesting hallway at UT Southwestern Medical Center that just screamed &quot;spooky&quot; at me. I wanted to grab my camera and shoot some of the interesting angles and lines but I was a bit worried about offending patients and staff by walking around the hotel with camera and tripod in hand. As an alternative, I used my iPhone and captured the following video. I processed it a little bit in iMovie.&lt;/p&gt;&lt;p&gt;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/8tchTRIbgqA&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
@@ -209,7 +292,7 @@ doPing( options )
     <item>
       <title>Stone, Steel, and Glass</title>
       <link>https://stevegood.github.io/2012/06/20/stone-steel-and-glass.html</link>
-      <pubDate>Wed, 20 Jun 2012 00:00:00 -0500</pubDate>
+      <pubDate>Wed, 20 Jun 2012 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2012/06/20/stone-steel-and-glass.html</guid>
       	<description>
 	&lt;h3&gt;Brackets&lt;/h3&gt;&lt;p&gt;I saw &lt;a href=&quot;https://plus.google.com/117080460060821588163/posts/dAsnQywY8Vq&quot;&gt;a post on Google+&lt;/a&gt; where someone posted a collage with the brackets used to make up one of their HDRs. I thought this was pretty cool and decided to do one of my own using &lt;a href=&quot;http://dipticapp.com/&quot;&gt;Diptic&lt;/a&gt; for Mac. What do ya&apos; think?&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/208899/blog/ssg-parts.png&quot;&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/208899/blog/ssg-parts.png&quot; alt=&quot;https://dl.dropboxusercontent.com/u/208899/blog/ssg-parts.png&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;&lt;h3&gt;Stone, Steel and Glass&lt;/h3&gt;&lt;p&gt;This is the finished product of the image above. It was taken in downtown Fort Worth on my last photowalk research day. I was fascinated by the combination of glass, metal and concrete and the lines they formed. Normally, this is filled with flowing water but I got there just shortly after they turned everything off. I really dig the way everything looks even without the water.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/208899/blog/Stone%2C%2BSteel%2Band%2BGlass-L.jpg&quot;&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/208899/blog/Stone%2C%2BSteel%2Band%2BGlass-L.jpg&quot; alt=&quot;https://dl.dropboxusercontent.com/u/208899/blog/Stone%2C%2BSteel%2Band%2BGlass-L.jpg&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
@@ -218,7 +301,7 @@ doPing( options )
     <item>
       <title>The Trumpets Sound</title>
       <link>https://stevegood.github.io/2012/06/19/the-trumpets-sound.html</link>
-      <pubDate>Tue, 19 Jun 2012 00:00:00 -0500</pubDate>
+      <pubDate>Tue, 19 Jun 2012 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2012/06/19/the-trumpets-sound.html</guid>
       	<description>
 	&lt;p&gt;Here is another shot I snapped while exploring Fort Worth and gathering info for my fall photowalk. This is on the side of Bass Performance Hall. The building and the angel are carved out of Texas limestone, which was quarried near Austin. You can &lt;a href=&quot;http://books.google.com/books/about/Angels_on_high.html?id=oWhQAAAAMAAJ&quot; title=&quot;Angels on high: Márton Váró&amp;#39;s limestone angels on the Nancy Lee and Perry R. Bass Performance Hall in Fort Worth, Texas&quot;&gt;read more about these amazing sculptures on Google Books&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/208899/blog/The%2BTrumpets%2BSound-L.jpg&quot;&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/208899/blog/The%2BTrumpets%2BSound-L.jpg&quot; alt=&quot;https://dl.dropboxusercontent.com/u/208899/blog/The%2BTrumpets%2BSound-L.jpg&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
@@ -227,7 +310,7 @@ doPing( options )
     <item>
       <title>What Big Teeth You Have</title>
       <link>https://stevegood.github.io/2012/06/18/what-big-teeth-you-have.html</link>
-      <pubDate>Mon, 18 Jun 2012 00:00:00 -0500</pubDate>
+      <pubDate>Mon, 18 Jun 2012 00:00:00 -0700</pubDate>
       <guid isPermaLink="false">2012/06/18/what-big-teeth-you-have.html</guid>
       	<description>
 	&lt;h2&gt;The SteveGood.org Repository Visualized&lt;/h2&gt;&lt;p&gt;A while back I found a &lt;a href=&quot;http://code.google.com/p/gource/&quot; title=&quot;Gource&quot;&gt;really interesting utility&lt;/a&gt; for visualizing the activity of a Git repository. Here&apos;s a cool little video of the repo for this site as visualized by Gource. Enjoy!&lt;/p&gt;&lt;p&gt;&lt;iframe width=&quot;420&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/dMtlcLqXFwc&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;&lt;h2&gt;What Big Teeth You Have&lt;/h2&gt;&lt;p&gt;I have been experimenting with a number of different photography techniques, one of those is &lt;a href=&quot;http://glyndewisblog.com/2010/01/19/the-invisible-black-backdrop-photography-technique/&quot; title=&quot;The Invisible Black Backdrop&quot;&gt;the invisible black backdrop&lt;/a&gt;. Using this technique, I decided to follow my chihuahua around and generally annoy him with my flash. The result was a yawn captured at just the right moment. Isn&apos;t he just so vicious?&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/208899/blog/DSC_3933-Edit-L.jpg&quot;&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/208899/blog/DSC_3933-Edit-L.jpg&quot; alt=&quot;https://dl.dropboxusercontent.com/u/208899/blog/DSC_3933-Edit-L.jpg&quot;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;

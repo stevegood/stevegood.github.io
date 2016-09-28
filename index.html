@@ -76,6 +76,86 @@
 	</div> -->
 
   			<div class="well page">
+					<a href="2016/09/27/using-groovy-to-write-atlassian-plugins.html"><h1>Using Groovy to write Atlassian plugins</h1></a>
+	  			<p>September 27, 2016</p>
+					<hr />
+	  			<p><p>Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation). But using Java can be overly verbose and less flexible than some other more modern languages. There are examples of writing plugins using <a href="https://bitbucket.org/ssaasen/atlassian-scala-example-plugin">Scala</a> and <a href="https://bitbucket.org/ssaasen/atlassian-jruby-example-plugin">JRuby</a> out there but documentation for using <a href="http://groovy-lang.org/">Groovy</a> seems to be a bit of a black hole. Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.</p><h2>Getting started</h2><p>Before you start you need to make sure that you have <a href="https://developer.atlassian.com/docs/getting-started/set-up-the-atlassian-plugin-sdk-and-build-a-project">installed the Atlassian SDK</a>. Once you have that installed we can create a new JIRA plugin. These steps should work fine for RefApp plugins as well as Confluence.</p><h3>Create a project</h3>
+<ul>
+  <li>Run <code>atlas-create-jira-plugin</code> from the command line</li>
+  <li>groupId: <em>rocks.stevegood.jira</em></li>
+  <li>artifactId: <em>my-groovy-plugin</em></li>
+  <li>version: <em>1.0.0-SNAPSHOT</em></li>
+  <li>package: <em>rocks.stevegood.jira</em></li>
+  <li>Y: <em>y</em></li>
+</ul><h3>Modify your <code>pom.xml</code></h3><h4>Add the <em>groovy-all</em> dependency to your plugin</h4>
+<pre><code class="xml">...
+&lt;dependency&gt;
+    &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
+    &lt;artifactId&gt;groovy-all&lt;/artifactId&gt;
+    &lt;version&gt;${groovy.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+...
+</code></pre><h4>Add the GMavenPlus plugin to your <em>plugins</em> block</h4>
+<pre><code class="xml">...
+&lt;plugin&gt;
+    &lt;groupId&gt;org.codehaus.gmavenplus&lt;/groupId&gt;
+    &lt;artifactId&gt;gmavenplus-plugin&lt;/artifactId&gt;
+    &lt;version&gt;1.5&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;execute&lt;/goal&gt;
+                &lt;goal&gt;compile&lt;/goal&gt;
+                &lt;goal&gt;testCompile&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
+            &lt;artifactId&gt;groovy-all&lt;/artifactId&gt;
+            &lt;version&gt;${groovy.version}&lt;/version&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/plugin&gt;
+...
+</code></pre><h3>Update the instructions for the <em>maven-jira-plugin</em> plugin</h3>
+<pre><code class="xml">...
+&lt;instructions&gt;
+  ...
+  &lt;Import-Package&gt;
+    ...
+    *;version=&quot;0&quot;;resolution:=&quot;optional&quot;,
+    ...
+  &lt;/Import-Package&gt;
+
+  ...
+
+  &lt;DynamicImport-Package&gt;
+    *
+  &lt;/DynamicImport-Package&gt;
+  ...
+&lt;/instructions&gt;
+...
+</code></pre><h4>Add the <em>groovy.version</em> property to the <em>properties</em> block</h4>
+<pre><code class="xml">...
+&lt;groovy.version&gt;2.4.7&lt;/groovy.version&gt;
+...
+</code></pre><h3>Update your project structure</h3>
+<ol>
+  <li>Rename <em>src/main/**java**</em> to <em>src/main/**groovy**</em></li>
+  <li>Rename <em>src/test/**java**</em> to <em>src/test/**groovy**</em></li>
+  <li>Rename <strong>all</strong> _*.java_ files to _*.groovy_
+</li>
+  <li>Fix the <em>MyPluginComponentImpl.groovy</em> file (around line 11) so that it compiles</li>
+</ol>
+<ul>
+  <li>Change <code>@ExportAsService({MyPluginComponent.class})</code> to <code>@ExportAsService([MyPluginComponent])</code></li>
+</ul><h3>Clean up code and run the plugin</h3><p>You can now go through your files are remove things like semicolons, parenthesis, and <em>public</em> scope declarations. At this point you should be able to start your plugin with <code>atlas-run</code>. If it doesn't work, verify that you have made all of the changes listed above and try again. You might also try cleaning your project first to avoid lingering artifacts with <code>atlas-clean</code>. You can also checkout the <a href="https://github.com/stevegood/my-groovy-plugin">example source code</a> if you get stuck.</p><p>Once you have JIRA running you should be able to see that your plugin has loaded from the <a href="http://localhost:2990/jira/plugins/servlet/upm">Manage Addons</a> screen. You should see something similar to the this:</p><p><img src="/images/manage-addons-my-groovy-plugin.png" alt="manage-addons-my-groovy-plugin""/></p></p>
+  			</div>
+  			<div class="well page">
 					<a href="2016/08/17/moving-to-github-pages.html"><h1>Moving to GitHub Pages</h1></a>
 	  			<p>August 17, 2016</p>
 					<hr />

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Using Groovy to write Atlassian plugins</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Steve Good">
+    <meta name="keywords" content="">
+    <meta name="generator" content="JBake">
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" type="text/css" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-material-design.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/ripples.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/main.css">
+
+    <!-- Le styles -->
+    <!-- <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/bootswatch.min.css" rel="stylesheet">
+    <link href="../../../css/asciidoctor.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/prettify.css" rel="stylesheet"> -->
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+  </head>
+  <body>
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-info navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../../index.html">Steve Good</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../../../about.html">About</a></li>
+            <li><a href="../../../feed.xml">Subscribe</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/stevegood/" target="_blank">GitHub</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="well page">
+		<div class="page-header">
+			<h1>Using Groovy to write Atlassian plugins</h1>
+		</div>
+
+		<p><em>September 27, 2016</em></p>
+
+		<p><p>Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation). But using Java can be overly verbose and less flexible than some other more modern languages. There are examples of writing plugins using <a href="https://bitbucket.org/ssaasen/atlassian-scala-example-plugin">Scala</a> and <a href="https://bitbucket.org/ssaasen/atlassian-jruby-example-plugin">JRuby</a> out there but documentation for using <a href="http://groovy-lang.org/">Groovy</a> seems to be a bit of a black hole. Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.</p><h2>Getting started</h2><p>Before you start you need to make sure that you have <a href="https://developer.atlassian.com/docs/getting-started/set-up-the-atlassian-plugin-sdk-and-build-a-project">installed the Atlassian SDK</a>. Once you have that installed we can create a new JIRA plugin. These steps should work fine for RefApp plugins as well as Confluence.</p><h3>Create a project</h3>
+<ul>
+  <li>Run <code>atlas-create-jira-plugin</code> from the command line</li>
+  <li>groupId: <em>rocks.stevegood.jira</em></li>
+  <li>artifactId: <em>my-groovy-plugin</em></li>
+  <li>version: <em>1.0.0-SNAPSHOT</em></li>
+  <li>package: <em>rocks.stevegood.jira</em></li>
+  <li>Y: <em>y</em></li>
+</ul><h3>Modify your <code>pom.xml</code></h3><h4>Add the <em>groovy-all</em> dependency to your plugin</h4>
+<pre><code class="xml">...
+&lt;dependency&gt;
+    &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
+    &lt;artifactId&gt;groovy-all&lt;/artifactId&gt;
+    &lt;version&gt;${groovy.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+...
+</code></pre><h4>Add the GMavenPlus plugin to your <em>plugins</em> block</h4>
+<pre><code class="xml">...
+&lt;plugin&gt;
+    &lt;groupId&gt;org.codehaus.gmavenplus&lt;/groupId&gt;
+    &lt;artifactId&gt;gmavenplus-plugin&lt;/artifactId&gt;
+    &lt;version&gt;1.5&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;execute&lt;/goal&gt;
+                &lt;goal&gt;compile&lt;/goal&gt;
+                &lt;goal&gt;testCompile&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
+            &lt;artifactId&gt;groovy-all&lt;/artifactId&gt;
+            &lt;version&gt;${groovy.version}&lt;/version&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/plugin&gt;
+...
+</code></pre><h3>Update the instructions for the <em>maven-jira-plugin</em> plugin</h3>
+<pre><code class="xml">...
+&lt;instructions&gt;
+  ...
+  &lt;Import-Package&gt;
+    ...
+    *;version=&quot;0&quot;;resolution:=&quot;optional&quot;,
+    ...
+  &lt;/Import-Package&gt;
+
+  ...
+
+  &lt;DynamicImport-Package&gt;
+    *
+  &lt;/DynamicImport-Package&gt;
+  ...
+&lt;/instructions&gt;
+...
+</code></pre><h4>Add the <em>groovy.version</em> property to the <em>properties</em> block</h4>
+<pre><code class="xml">...
+&lt;groovy.version&gt;2.4.7&lt;/groovy.version&gt;
+...
+</code></pre><h3>Update your project structure</h3>
+<ol>
+  <li>Rename <em>src/main/**java**</em> to <em>src/main/**groovy**</em></li>
+  <li>Rename <em>src/test/**java**</em> to <em>src/test/**groovy**</em></li>
+  <li>Rename <strong>all</strong> _*.java_ files to _*.groovy_
+</li>
+  <li>Fix the <em>MyPluginComponentImpl.groovy</em> file (around line 11) so that it compiles</li>
+</ol>
+<ul>
+  <li>Change <code>@ExportAsService({MyPluginComponent.class})</code> to <code>@ExportAsService([MyPluginComponent])</code></li>
+</ul><h3>Clean up code and run the plugin</h3><p>You can now go through your files are remove things like semicolons, parenthesis, and <em>public</em> scope declarations. At this point you should be able to start your plugin with <code>atlas-run</code>. If it doesn't work, verify that you have made all of the changes listed above and try again. You might also try cleaning your project first to avoid lingering artifacts with <code>atlas-clean</code>. You can also checkout the <a href="https://github.com/stevegood/my-groovy-plugin">example source code</a> if you get stuck.</p><p>Once you have JIRA running you should be able to see that your plugin has loaded from the <a href="http://localhost:2990/jira/plugins/servlet/upm">Manage Addons</a> screen. You should see something similar to the this:</p><p><img src="/images/manage-addons-my-groovy-plugin.png" alt="manage-addons-my-groovy-plugin""/></p></p>
+
+		<hr />
+
+		<section class="post-comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'stevegood'; // required: replace example with your forum shortname
+        var disqus_identifier = 'September.27.2016';
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+	</div>
+
+		</div>
+		<div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">&copy; 2016 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.4.0</a></p>
+      </div>
+    </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="../../../js/material.min.js"></script>
+		<script src="../../../js/ripples.min.js"></script>
+		<script type="text/javascript">
+			!(function($){
+				$(document).on('ready', function(){
+					$.material.init();
+					$("a[href^='http']:not([href^='https://" + window.location.host + "'])").attr('target','_blank');
+				});
+			}(jQuery));
+		</script>
+
+  </body>
+</html>
