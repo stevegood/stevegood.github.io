@@ -6,8 +6,8 @@
     <atom:link href="https://stevegood.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Tue, 27 Sep 2016 17:12:48 -0700</pubDate>
-    <lastBuildDate>Tue, 27 Sep 2016 17:12:48 -0700</lastBuildDate>
+    <pubDate>Tue, 27 Sep 2016 17:22:55 -0700</pubDate>
+    <lastBuildDate>Tue, 27 Sep 2016 17:22:55 -0700</lastBuildDate>
 
     <item>
       <title>Using Groovy to write Atlassian plugins</title>
@@ -17,12 +17,14 @@
       	<description>
 	&lt;p&gt;Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation). But using Java can be overly verbose and less flexible than some other more modern languages. There are examples of writing plugins using &lt;a href=&quot;https://bitbucket.org/ssaasen/atlassian-scala-example-plugin&quot;&gt;Scala&lt;/a&gt; and &lt;a href=&quot;https://bitbucket.org/ssaasen/atlassian-jruby-example-plugin&quot;&gt;JRuby&lt;/a&gt; out there but documentation for using &lt;a href=&quot;http://groovy-lang.org/&quot;&gt;Groovy&lt;/a&gt; seems to be a bit of a black hole. Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.&lt;/p&gt;&lt;h2&gt;Getting started&lt;/h2&gt;&lt;p&gt;Before you start you need to make sure that you have &lt;a href=&quot;https://developer.atlassian.com/docs/getting-started/set-up-the-atlassian-plugin-sdk-and-build-a-project&quot;&gt;installed the Atlassian SDK&lt;/a&gt;. Once you have that installed we can create a new JIRA plugin. These steps should work fine for RefApp plugins as well as Confluence.&lt;/p&gt;&lt;h3&gt;Create a project&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Run &lt;code&gt;atlas-create-jira-plugin&lt;/code&gt; from the command line&lt;/li&gt;
-  &lt;li&gt;groupId: &lt;em&gt;rocks.stevegood.jira&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;artifactId: &lt;em&gt;my-groovy-plugin&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;version: &lt;em&gt;1.0.0-SNAPSHOT&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;package: &lt;em&gt;rocks.stevegood.jira&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Y: &lt;em&gt;y&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Run &lt;code&gt;atlas-create-jira-plugin&lt;/code&gt; from the command line
+  &lt;ul&gt;
+    &lt;li&gt;groupId: &lt;em&gt;rocks.stevegood.jira&lt;/em&gt;&lt;/li&gt;
+    &lt;li&gt;artifactId: &lt;em&gt;my-groovy-plugin&lt;/em&gt;&lt;/li&gt;
+    &lt;li&gt;version: &lt;em&gt;1.0.0-SNAPSHOT&lt;/em&gt;&lt;/li&gt;
+    &lt;li&gt;package: &lt;em&gt;rocks.stevegood.jira&lt;/em&gt;&lt;/li&gt;
+    &lt;li&gt;Y: &lt;em&gt;y&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;h3&gt;Modify your &lt;code&gt;pom.xml&lt;/code&gt;&lt;/h3&gt;&lt;h4&gt;Add the &lt;em&gt;groovy-all&lt;/em&gt; dependency to your plugin&lt;/h4&gt;
 &lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;...
 &amp;lt;dependency&amp;gt;
@@ -81,10 +83,9 @@
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;h3&gt;Update your project structure&lt;/h3&gt;
 &lt;ol&gt;
-  &lt;li&gt;Rename &lt;em&gt;src/main/**java**&lt;/em&gt; to &lt;em&gt;src/main/**groovy**&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Rename &lt;em&gt;src/test/**java**&lt;/em&gt; to &lt;em&gt;src/test/**groovy**&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Rename &lt;strong&gt;all&lt;/strong&gt; _*.java_ files to _*.groovy_
-&lt;/li&gt;
+  &lt;li&gt;Rename &lt;code&gt;src/main/java&lt;/code&gt; to &lt;code&gt;src/main/groovy&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Rename &lt;code&gt;src/test/java&lt;/code&gt; to &lt;code&gt;src/test/groovy&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Rename &lt;strong&gt;all&lt;/strong&gt; &lt;code&gt;*.java&lt;/code&gt; files to &lt;code&gt;*.groovy&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;Fix the &lt;em&gt;MyPluginComponentImpl.groovy&lt;/em&gt; file (around line 11) so that it compiles&lt;/li&gt;
 &lt;/ol&gt;
 &lt;ul&gt;

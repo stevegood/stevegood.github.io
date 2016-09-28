@@ -81,12 +81,14 @@
 					<hr />
 	  			<p><p>Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation). But using Java can be overly verbose and less flexible than some other more modern languages. There are examples of writing plugins using <a href="https://bitbucket.org/ssaasen/atlassian-scala-example-plugin">Scala</a> and <a href="https://bitbucket.org/ssaasen/atlassian-jruby-example-plugin">JRuby</a> out there but documentation for using <a href="http://groovy-lang.org/">Groovy</a> seems to be a bit of a black hole. Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.</p><h2>Getting started</h2><p>Before you start you need to make sure that you have <a href="https://developer.atlassian.com/docs/getting-started/set-up-the-atlassian-plugin-sdk-and-build-a-project">installed the Atlassian SDK</a>. Once you have that installed we can create a new JIRA plugin. These steps should work fine for RefApp plugins as well as Confluence.</p><h3>Create a project</h3>
 <ul>
-  <li>Run <code>atlas-create-jira-plugin</code> from the command line</li>
-  <li>groupId: <em>rocks.stevegood.jira</em></li>
-  <li>artifactId: <em>my-groovy-plugin</em></li>
-  <li>version: <em>1.0.0-SNAPSHOT</em></li>
-  <li>package: <em>rocks.stevegood.jira</em></li>
-  <li>Y: <em>y</em></li>
+  <li>Run <code>atlas-create-jira-plugin</code> from the command line
+  <ul>
+    <li>groupId: <em>rocks.stevegood.jira</em></li>
+    <li>artifactId: <em>my-groovy-plugin</em></li>
+    <li>version: <em>1.0.0-SNAPSHOT</em></li>
+    <li>package: <em>rocks.stevegood.jira</em></li>
+    <li>Y: <em>y</em></li>
+  </ul></li>
 </ul><h3>Modify your <code>pom.xml</code></h3><h4>Add the <em>groovy-all</em> dependency to your plugin</h4>
 <pre><code class="xml">...
 &lt;dependency&gt;
@@ -145,10 +147,9 @@
 ...
 </code></pre><h3>Update your project structure</h3>
 <ol>
-  <li>Rename <em>src/main/**java**</em> to <em>src/main/**groovy**</em></li>
-  <li>Rename <em>src/test/**java**</em> to <em>src/test/**groovy**</em></li>
-  <li>Rename <strong>all</strong> _*.java_ files to _*.groovy_
-</li>
+  <li>Rename <code>src/main/java</code> to <code>src/main/groovy</code></li>
+  <li>Rename <code>src/test/java</code> to <code>src/test/groovy</code></li>
+  <li>Rename <strong>all</strong> <code>*.java</code> files to <code>*.groovy</code></li>
   <li>Fix the <em>MyPluginComponentImpl.groovy</em> file (around line 11) so that it compiles</li>
 </ol>
 <ul>

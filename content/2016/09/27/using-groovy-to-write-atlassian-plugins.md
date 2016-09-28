@@ -14,11 +14,11 @@ Before you start you need to make sure that you have [installed the Atlassian SD
 ### Create a project
 
 - Run ```atlas-create-jira-plugin``` from the command line
-  - groupId: _rocks.stevegood.jira_
-  - artifactId: _my-groovy-plugin_
-  - version: _1.0.0-SNAPSHOT_
-  - package: _rocks.stevegood.jira_
-  - Y: _y_
+    - groupId: _rocks.stevegood.jira_
+    - artifactId: _my-groovy-plugin_
+    - version: _1.0.0-SNAPSHOT_
+    - package: _rocks.stevegood.jira_
+    - Y: _y_
 
 ### Modify your ```pom.xml```
 
@@ -95,9 +95,9 @@ Before you start you need to make sure that you have [installed the Atlassian SD
 
 ### Update your project structure
 
-1. Rename _src/main/**java**_ to _src/main/**groovy**_
-2. Rename _src/test/**java**_ to _src/test/**groovy**_
-3. Rename **all** _*.java_ files to _*.groovy_
+1. Rename ```src/main/java``` to ```src/main/groovy```
+2. Rename ```src/test/java``` to ```src/test/groovy```
+3. Rename **all** ```*.java``` files to ```*.groovy```
 4. Fix the _MyPluginComponentImpl.groovy_ file (around line 11) so that it compiles
   - Change ```@ExportAsService({MyPluginComponent.class})``` to ```@ExportAsService([MyPluginComponent])```
 
