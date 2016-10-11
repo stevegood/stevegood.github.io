@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Steve Good</title>
+    <link>http://www.stevegood.rocks/index.xml</link>
+    <description>Recent content on Steve Good</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://www.stevegood.rocks/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Using Groovy to write Atlassian plugins</title>
+      <link>http://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</link>
+      <pubDate>Tue, 27 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</guid>
+      <description>
+
+&lt;p&gt;Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation).  But using Java can be overly verbose and less flexible than some other more modern languages.  There are examples of writing plugins using &lt;a href=&#34;https://bitbucket.org/ssaasen/atlassian-scala-example-plugin&#34;&gt;Scala&lt;/a&gt; and &lt;a href=&#34;https://bitbucket.org/ssaasen/atlassian-jruby-example-plugin&#34;&gt;JRuby&lt;/a&gt; out there but documentation for using &lt;a href=&#34;http://groovy-lang.org/&#34;&gt;Groovy&lt;/a&gt; seems to be a bit of a black hole.  Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-started&#34;&gt;Getting started&lt;/h2&gt;
+
+&lt;p&gt;Before you start you need to make sure that you have &lt;a href=&#34;https://developer.atlassian.com/docs/getting-started/set-up-the-atlassian-plugin-sdk-and-build-a-project&#34;&gt;installed the Atlassian SDK&lt;/a&gt;. Once you have that installed we can create a new JIRA plugin.  These steps should work fine for RefApp plugins as well as Confluence.&lt;/p&gt;
+
+&lt;h3 id=&#34;create-a-project&#34;&gt;Create a project&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Run &lt;code&gt;atlas-create-jira-plugin&lt;/code&gt; from the command line
+
+&lt;ul&gt;
+&lt;li&gt;groupId: &lt;em&gt;rocks.stevegood.jira&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;artifactId: &lt;em&gt;my-groovy-plugin&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;version: &lt;em&gt;1.0.0-SNAPSHOT&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;package: &lt;em&gt;rocks.stevegood.jira&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Y: &lt;em&gt;y&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;modify-your-pom-xml&#34;&gt;Modify your &lt;code&gt;pom.xml&lt;/code&gt;&lt;/h3&gt;
+
+&lt;h4 id=&#34;add-the-groovy-all-dependency-to-your-plugin&#34;&gt;Add the &lt;em&gt;groovy-all&lt;/em&gt; dependency to your plugin&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;...
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.codehaus.groovy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;groovy-all&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;${groovy.version}&amp;lt;/version&amp;gt;
+    &amp;lt;scope&amp;gt;compile&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;add-the-gmavenplus-plugin-to-your-plugins-block&#34;&gt;Add the GMavenPlus plugin to your &lt;em&gt;plugins&lt;/em&gt; block&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;...
+&amp;lt;plugin&amp;gt;
+    &amp;lt;groupId&amp;gt;org.codehaus.gmavenplus&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;gmavenplus-plugin&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.5&amp;lt;/version&amp;gt;
+    &amp;lt;executions&amp;gt;
+        &amp;lt;execution&amp;gt;
+            &amp;lt;goals&amp;gt;
+                &amp;lt;goal&amp;gt;execute&amp;lt;/goal&amp;gt;
+                &amp;lt;goal&amp;gt;compile&amp;lt;/goal&amp;gt;
+                &amp;lt;goal&amp;gt;testCompile&amp;lt;/goal&amp;gt;
+            &amp;lt;/goals&amp;gt;
+        &amp;lt;/execution&amp;gt;
+    &amp;lt;/executions&amp;gt;
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.codehaus.groovy&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;groovy-all&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${groovy.version}&amp;lt;/version&amp;gt;
+            &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+&amp;lt;/plugin&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;update-the-instructions-for-the-maven-jira-plugin-plugin&#34;&gt;Update the instructions for the &lt;em&gt;maven-jira-plugin&lt;/em&gt; plugin&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;...
+&amp;lt;instructions&amp;gt;
+  ...
+  &amp;lt;Import-Package&amp;gt;
+    ...
+    *;version=&amp;quot;0&amp;quot;;resolution:=&amp;quot;optional&amp;quot;,
+    ...
+  &amp;lt;/Import-Package&amp;gt;
+
+  ...
+
+  &amp;lt;DynamicImport-Package&amp;gt;
+    *
+  &amp;lt;/DynamicImport-Package&amp;gt;
+  ...
+&amp;lt;/instructions&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;add-the-groovy-version-property-to-the-properties-block&#34;&gt;Add the &lt;em&gt;groovy.version&lt;/em&gt; property to the &lt;em&gt;properties&lt;/em&gt; block&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;...
+&amp;lt;groovy.version&amp;gt;2.4.7&amp;lt;/groovy.version&amp;gt;
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;update-your-project-structure&#34;&gt;Update your project structure&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Rename &lt;code&gt;src/main/java&lt;/code&gt; to &lt;code&gt;src/main/groovy&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Rename &lt;code&gt;src/test/java&lt;/code&gt; to &lt;code&gt;src/test/groovy&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Rename &lt;strong&gt;all&lt;/strong&gt; &lt;code&gt;*.java&lt;/code&gt; files to &lt;code&gt;*.groovy&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fix the &lt;em&gt;MyPluginComponentImpl.groovy&lt;/em&gt; file (around line 11) so that it compiles
+
+&lt;ul&gt;
+&lt;li&gt;Change &lt;code&gt;@ExportAsService({MyPluginComponent.class})&lt;/code&gt; to &lt;code&gt;@ExportAsService([MyPluginComponent])&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;clean-up-code-and-run-the-plugin&#34;&gt;Clean up code and run the plugin&lt;/h3&gt;
+
+&lt;p&gt;You can now go through your files are remove things like semicolons, parenthesis, and &lt;em&gt;public&lt;/em&gt; scope declarations. At this point you should be able to start your plugin with &lt;code&gt;atlas-run&lt;/code&gt;.  If it doesn&amp;rsquo;t work, verify that you have made all of the changes listed above and try again.  You might also try cleaning your project first to avoid lingering artifacts with &lt;code&gt;atlas-clean&lt;/code&gt;.  You can also checkout the &lt;a href=&#34;https://github.com/stevegood/my-groovy-plugin&#34;&gt;example source code&lt;/a&gt; if you get stuck.&lt;/p&gt;
+
+&lt;p&gt;Once you have JIRA running you should be able to see that your plugin has loaded from the &lt;a href=&#34;http://localhost:2990/jira/plugins/servlet/upm&#34;&gt;Manage Addons&lt;/a&gt; screen.  You should see something similar to the this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/manage-addons-my-groovy-plugin.png&#34; alt=&#34;manage-addons-my-groovy-plugin&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Moving to GitHub Pages</title>
+      <link>http://www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</link>
+      <pubDate>Wed, 17 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</guid>
+      <description>
+
+&lt;h2 id=&#34;ghost-pivotal-cf-3&#34;&gt;Ghost + Pivotal CF = &amp;lt;3&lt;/h2&gt;
+
+&lt;p&gt;Last year I moved my blog to &lt;a href=&#34;https://ghost.org/&#34;&gt;Ghost&lt;/a&gt; and hosted it in &lt;a href=&#34;https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry?utm_source=menu&amp;amp;utm_medium=link&amp;amp;utm_campaign=gettingstartedwithpcf&#34;&gt;Pivotal CF&lt;/a&gt;.  This has been great so far but I&amp;rsquo;m starting to get twitchy about paying for an application to be running in PCF when I rarely update anything.  This is my response to that concern.&lt;/p&gt;
+
+&lt;h2 id=&#34;github-pages&#34;&gt;GitHub Pages&lt;/h2&gt;
+
+&lt;p&gt;There are a number of advantages to using GitHub Pages over a blogging application but for the most part I really like the price.  &lt;strong&gt;Free&lt;/strong&gt;.  Sure, static content loads faster than generated content, and GitHub is pretty amazing but in reality, this is going to be more work when writing blog posts than using Ghost (or any other blogging platform for that matter).  But that price!  Also, I think the workflow of writing blog posts going forward will look a whole lot more like my typical software development with the added step of generating the static content (I&amp;rsquo;m using &lt;a href=&#34;http://jbake.org/&#34;&gt;JBake&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id=&#34;moar-posts&#34;&gt;Moar Posts?&lt;/h2&gt;
+
+&lt;p&gt;No, probably not yet.  I have a whole lot going on in my life right now that is taking up the vast majority of my time.  However, I will certainly feel better about not blogging as often since it won&amp;rsquo;t be costing my anything ( &lt;em&gt;have I harped of the cost enough yet?&lt;/em&gt; ).&lt;/p&gt;
+
+&lt;p&gt;More to come later (and I hope to figure out how to get comments added).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>So You Want to Learn to Program?</title>
+      <link>http://www.stevegood.rocks/post/2015/09/11/so-you-want-to-learn-to-program/</link>
+      <pubDate>Fri, 11 Sep 2015 20:33:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2015/09/11/so-you-want-to-learn-to-program/</guid>
+      <description>&lt;p&gt;I get asked all the time &lt;a href=&#34;http://twitch.tv/ExtremeModeration/&#34;&gt;on my stream&lt;/a&gt; which language someone should learn when they first get started. I typically start by asking what the end goal is. Want to build games? Websites? Desktop applications? The answer to that question will lead new developers in totally different directions.  I recently found a pretty good &lt;a href=&#34;http://carlcheo.com/startcoding&#34;&gt;infographic&lt;/a&gt; to help young developers choose a language that best suites their goals.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/which-programming-language-should-i-learn-first-infographic.png&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/which-programming-language-should-i-learn-first-infographic.png&#34; alt=&#34;/images/post/which-programming-language-should-i-learn-first-infographic.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Moving Forward and a Tiny Planet</title>
+      <link>http://www.stevegood.rocks/post/2013/06/04/moving-forward-and-a-tiny-planet/</link>
+      <pubDate>Tue, 04 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2013/06/04/moving-forward-and-a-tiny-planet/</guid>
+      <description>
+
+&lt;p&gt;For the last two years I have been a full time contractor at &lt;a href=&#34;http://kainexus.com&#34;&gt;KaiNexus&lt;/a&gt; serving as their Principal Architect.  During this that time I made new friends and had the opportunity to work on a project that could leave a great positive mark on the world.  However, as with all things, this chapter has come to a close.  Starting this month I will be transitioning from KaiNexus to Cisco Systems.  While I&amp;rsquo;m not a big fan of the corporate machine, the team I&amp;rsquo;ll be working with is small and has that startup feel about it.  I&amp;rsquo;ll still be working with Flex but I&amp;rsquo;ll be focusing much less on the server-side of the application, which is a big shift for me.&lt;/p&gt;
+
+&lt;p&gt;In addition to a change in career, I&amp;rsquo;ve moved my site, as you may have noticed.  Last May &lt;a href=&#34;http://stevegood.org/blog/2012/5/24/grails-and-bootstrap-and-jelastic-oh-my&#34;&gt;I moved my site from Posterous to a custom built Grails application running on Jelastic&lt;/a&gt;.  A few months later I moved the application again from &lt;a href=&#34;http://jelastic.com&#34;&gt;Jelastic&lt;/a&gt; to &lt;a href=&#34;http://appfog.com&#34;&gt;AppFog&lt;/a&gt; as an experiment.  Sadly, that experiment never quite met my expectations.  During my time hosting the application on AppFog I experienced many outages, difficulties in deployment and had to make significant changes to the app just to get it to run.  This was a very different experience from Jelastic where deployment was a no brainer, was always up and required no code changes to make it compatible.  I&amp;rsquo;ve raved about Jelastic in the past and I still do, however, as my time becomes more limited and I spend more free time persuing photography I find myself letting the Grails app I built fall behind.  I just don&amp;rsquo;t have the drive to maintain it anymore.  As a result, I&amp;rsquo;ve moved my site off of my home brew application and over to Squarespace.  So far, the experience has been pleasant.  My only issue has been with migrating comments (if you know how I can do this please let me know!) and as a result I&amp;rsquo;ve left some posts off the new site.&lt;/p&gt;
+
+&lt;p&gt;So far June has been an exciting month of change.  I&amp;rsquo;m looking forward to seeing what else is on the horizon!&lt;/p&gt;
+
+&lt;h2 id=&#34;a-tiny-planet&#34;&gt;A Tiny Planet&lt;/h2&gt;
+
+&lt;p&gt;A few weeks ago I decided to try my hand at a quirky form of panoramic photography.  The process involves shooting a series of overlapping photos 360 degrees around a fixed point, just like with a typical panorama.  The fun part comes into play when you take the stitched photos into Photoshop and turn them into a sphere.  The result is a tiny planet with giant landscape and buildings.  After shooting a few of these it seems like the most successful shots are of scenes with little skyline clutter and only a few tall points of interest.  Here&amp;rsquo;s one of my favorites of a simple parking lot in Fort Worth.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/tiny-planet-2013.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/tiny-planet-2013.jpg&#34; alt=&#34;/images/post/tiny-planet-2013.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simple URL Monitor Using Groovy and Twilio</title>
+      <link>http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
+      <pubDate>Thu, 23 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
+      <description>&lt;p&gt;Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.&lt;/p&gt;
+
+&lt;p&gt;To start, I set some minimal requirements for myself.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Needs to be easy to write, can&amp;rsquo;t take more than an hour to build&lt;/li&gt;
+&lt;li&gt;Needs to be easy to maintain, problems should be easy to find and fix&lt;/li&gt;
+&lt;li&gt;Needs to be able to send SMS messages in case of outages&lt;/li&gt;
+&lt;li&gt;Needs to be able to run standalone or on a server under cron&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When looking at the requirements I had to think about what kind of scripting environment would be best served for the task.  I had several options available to me each with pros and cons.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bash
+
+&lt;ul&gt;
+&lt;li&gt;Pros
+
+&lt;ul&gt;
+&lt;li&gt;Runs natively on any *nix based system&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Cons
+
+&lt;ul&gt;
+&lt;li&gt;Extremely verbose&lt;/li&gt;
+&lt;li&gt;Will not run on non *nix based systems&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Perl
+
+&lt;ul&gt;
+&lt;li&gt;Pros
+
+&lt;ul&gt;
+&lt;li&gt;I would be able to drudge up ancient knowledge that I had buried deep in the catacombs of my mind&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Cons
+
+&lt;ul&gt;
+&lt;li&gt;I don&amp;rsquo;t have enough time to drudge up my ancient, and dusty, knowledge of Perl&lt;/li&gt;
+&lt;li&gt;I would spend too much time trying to figure out how to do everything in a single line of code&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Groovy
+
+&lt;ul&gt;
+&lt;li&gt;Pros
+
+&lt;ul&gt;
+&lt;li&gt;I work with Groovy every day at work&lt;/li&gt;
+&lt;li&gt;I can use Grape to supply dependencies using the &lt;code&gt;@Grab&lt;/code&gt; annotation&lt;/li&gt;
+&lt;li&gt;Code tends to be clean and simple&lt;/li&gt;
+&lt;li&gt;Can be run on any system that has Groovy installed&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Cons
+
+&lt;ul&gt;
+&lt;li&gt;Must have Groovy installed&lt;/li&gt;
+&lt;li&gt;It is a little slow to startup&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It should be no surprise that I chose to use Groovy for this project.  For me, Groovy just fits the bill better in terms of code verbosity and features available.&lt;/p&gt;
+
+&lt;p&gt;Building the script was a snap.  One of the cool things about shell scripting is that you are able to specify the binary that you want to use to execute your script. So by adding a single line of declaration I was able to create a script that can run as if it was a native executable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env groovy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that it&amp;rsquo;s just a matter of writing the code that does the work!  Lets start with the dependent libraries.&lt;/p&gt;
+
+&lt;p&gt;First I needed to make sure I had the HTTP-Builder library.  Grape makes this a snap to get by letting me take advantage of the &lt;code&gt;@Grab&lt;/code&gt; annotation. I just place the following towards the top of my script and like magic everything I need is available.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;@Grab(group=&#39;org.codehaus.groovy.modules.http-builder&#39;, module=&#39;http-builder&#39;, version=&#39;0.5.2&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I also need to make sure I have the Apache commons httpclient libraries.  I use another &lt;code&gt;@Grab&lt;/code&gt; to do this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;@Grab(group=&#39;commons-httpclient&#39;,module=&#39;commons-httpclient&#39;,version=&#39;3.1&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Grape is actually going out to the maven repositories and downloading the jars I requested and adding them to my classpath.  Pretty slick eh?&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll skip the imports (but you can check out the full source if those kinds of things excite you) and just straight to the guts of the script.&lt;/p&gt;
+
+&lt;p&gt;Next, among other things, I wanted to make sure that the script was configurable enough that I could add a list of phone numbers and be able to easily specify the url to monitor. To do that I created a nice little HashMap of key value pairs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def now = new Date()
+def options = [
+  server: &amp;quot;https://google.com/&amp;quot;,
+  intervalSeconds: 600,
+  sid: &amp;quot;&amp;quot;,
+  authToken: &amp;quot;&amp;quot;,
+  fromPhone: &amp;quot;&amp;quot;,
+  toPhone: &amp;quot;&amp;quot;,
+  smsOnStart: false,
+  smsOnStartMessage: &amp;quot;Site monitoring script started at ${now.format(&#39;H:mm:ss&#39;)} on ${now.format(&#39;yyyy-MM-dd&#39;)}&amp;quot;
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ok, so options are great, but without some functionality they really mean nothing. Next I define two functions.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the method that sends the SMS.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def sendSMS(def message, def opts){
+  if (opts.sid != &amp;quot;&amp;quot; &amp;amp;&amp;amp; opts.authToken != &amp;quot;&amp;quot; &amp;amp;&amp;amp; message != &amp;quot;&amp;quot;){
+    String twilioHost = &amp;quot;api.twilio.com&amp;quot;
+    String sid = opts.sid
+    String authToken = opts.authToken
+
+    def hc = new HostConfiguration()
+    hc.setHost(twilioHost, 443, &amp;quot;https&amp;quot;)
+    def url = &amp;quot;/2010-04-01/Accounts/$sid/SMS/Messages&amp;quot;
+
+    def client = new HttpClient()
+    Credentials defaultcreds = new UsernamePasswordCredentials(sid, authToken)
+    client.getState().setCredentials(null, null, defaultcreds)
+
+    opts.toPhone.split(&#39;,&#39;)?.each { toPhn -&amp;gt;
+      PostMethod postMethod = new PostMethod(url)
+      postMethod.addParameter(&amp;quot;IfMachine&amp;quot;,&amp;quot;Continue&amp;quot;)
+      postMethod.addParameter(&amp;quot;Method&amp;quot;,&amp;quot;POST&amp;quot;)
+      postMethod.addParameter(&amp;quot;From&amp;quot;,opts.fromPhone)
+      postMethod.addParameter(&amp;quot;To&amp;quot;,toPhn)
+      postMethod.addParameter(&amp;quot;Body&amp;quot;,message)
+
+      client.executeMethod(hc, postMethod)
+
+      postMethod.releaseConnection()
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And here&amp;rsquo;s the method that checks the status of the url.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;def doPing(def opts) {
+  if (opts.server != &amp;quot;&amp;quot;){
+    try {
+      new HTTPBuilder( opts.server ).get( path:&#39;&#39; ) { response -&amp;gt;
+        def msg = &amp;quot;&amp;quot;
+        if (response.statusLine.statusCode == 200){
+          msg = &amp;quot;${new Date()} :: UP!&amp;quot;
+          println msg
+        } else {
+          msg = &amp;quot;${new Date()} :: There might be a production problem! -&amp;gt; ${response.statusLine.statusCode}&amp;quot;
+          println msg
+          sendSMS(msg,opts)
+        }
+      }
+    } catch( e ){
+      println &amp;quot;${new Date()}&amp;quot;
+      e.printStackTrace()
+      sendSMS(&amp;quot;There was an error when connecting to the production server, it might be down.&amp;quot;,opts)
+    }
+
+    if (opts.intervalSeconds &amp;gt; 0){
+      def then = new Date()
+      then.seconds += opts.intervalSeconds
+      println &amp;quot;Checking again at ${then}&amp;quot;
+      while (new Date() &amp;lt;= then){
+        // do nothing
+      }
+
+      doPing( opts )
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since these are both method declarations and they won&amp;rsquo;t just call themselves we need to do one last thing, call the doPing method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;if (options.smsOnStart){
+  sendSMS(options.smsOnStartMessage,options)
+}
+
+doPing( options )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s the whole script! If you are interested in looking at or using the script &lt;a href=&#34;https://github.com/stevegood/groovy-url-monitor&#34;&gt;Github&amp;rsquo;s&lt;/a&gt; going to be the best place to do that. With comments and code the whole thing come to a mere 106 lines of code! Not bad for something that monitors a URL and then sends an SMS when there is a problem.&lt;/p&gt;
+
+&lt;p&gt;I know I glossed over how the methods actually work but I felt they were pretty self explanatory. Feel free to ask questions in the comments if you would like further explanation.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>New KaiNexus Video</title>
+      <link>http://www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</link>
+      <pubDate>Tue, 24 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://kainexus.com&#34;&gt;KaiNexus&lt;/a&gt;, the company where I am the Principal Architect, has just released our latest &amp;ldquo;Explainer&amp;rdquo; video.  The new video includes 3 use cases and a bunch of screen grabs from the actual software.  This video is quite exciting as I think it really shows what kinds of problems our software solves.  Check it out!&lt;/p&gt;
+
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/POKSpu5-8NU&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Way Out</title>
+      <link>http://www.stevegood.rocks/post/2012/07/05/the-way-out/</link>
+      <pubDate>Thu, 05 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/07/05/the-way-out/</guid>
+      <description>
+
+&lt;p&gt;Sometimes it is so easy to ignore the things around us that we see on a daily basis. The subject of this photo was no exception. This is a walkway at the office complex where I work 5 days a week and I never once thought to bring my camera and shoot it. A few days ago I decided to change that. Here are the results.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/the-way-out.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/the-way-out.jpg&#34; alt=&#34;/images/post/the-way-out.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;smugmug-grails-plugin-update&#34;&gt;SmugMug Grails Plugin Update&lt;/h2&gt;
+
+&lt;p&gt;A few weeks ago I mentioned that I was building a Grails plugin that aimed to wrap the SmugMug API. As of today, I am about 80% done with the coding and will be giving it a through test phase and creating docs soon.  Once done, it will be available through the normal Grails plugin channels and be completely open source.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Hallway</title>
+      <link>http://www.stevegood.rocks/post/2012/06/26/the-hallway/</link>
+      <pubDate>Tue, 26 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/06/26/the-hallway/</guid>
+      <description>
+
+&lt;p&gt;There is a really interesting hallway at UT Southwestern Medical Center that just screamed &amp;ldquo;spooky&amp;rdquo; at me.  I wanted to grab my camera and shoot some of the interesting angles and lines but I was a bit worried about offending patients and staff by walking around the hotel with camera and tripod in hand.  As an alternative, I used my iPhone and captured the following video.  I processed it a little bit in iMovie.&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/8tchTRIbgqA&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;living-in-a-hospital&#34;&gt;Living in a Hospital&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ve spent the last five days pretty much living at UT Southwestern Medical Center.  My step daughter has been unable to eat more than a few bites of food without throwing up for about three months.  After many tests and even a surgery to remove her gall bladder, doctors finally admitted her to the hospital for observation and even more tests.  As a result, my wife and I have spent nearly the whole time living I the hospital room with her.  I ask, for those comfortable with it, for prayers for her health and that the doctors would be able find the problem and come up with a solution.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Stone Steel and Glass</title>
+      <link>http://www.stevegood.rocks/post/2012/06/20/stone-steel-and-glass/</link>
+      <pubDate>Wed, 20 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/06/20/stone-steel-and-glass/</guid>
+      <description>
+
+&lt;p&gt;This is the finished product of the image below. It was taken in downtown Fort Worth on my last photowalk research day. I was fascinated by the combination of glass, metal and concrete and the lines they formed. Normally, this is filled with flowing water but I got there just shortly after they turned everything off. I really dig the way everything looks even without the water.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/stone-steel-and-glass.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/stone-steel-and-glass.jpg&#34; alt=&#34;/images/post/stone-steel-and-glass.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;brackets&#34;&gt;Brackets&lt;/h3&gt;
+
+&lt;p&gt;I saw &lt;a href=&#34;https://plus.google.com/117080460060821588163/posts/dAsnQywY8Vq&#34;&gt;a post on Google+&lt;/a&gt; where someone posted a collage with the brackets used to make up one of their HDRs.  I thought this was pretty cool and decided to do one of my own using &lt;a href=&#34;http://dipticapp.com/&#34;&gt;Diptic&lt;/a&gt; for Mac. What do ya&amp;rsquo; think?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://dl.dropboxusercontent.com/u/208899/blog/ssg-parts.png&#34;&gt;&lt;img src=&#34;https://dl.dropboxusercontent.com/u/208899/blog/ssg-parts.png&#34; alt=&#34;https://dl.dropboxusercontent.com/u/208899/blog/ssg-parts.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Trumpets Sound</title>
+      <link>http://www.stevegood.rocks/post/2012/06/19/the-trumptes-sound/</link>
+      <pubDate>Tue, 19 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/06/19/the-trumptes-sound/</guid>
+      <description>&lt;p&gt;Here is another shot I snapped while exploring Fort Worth and gathering info for my fall photowalk. This is on the side of Bass Performance Hall.  The building and the angel are carved out of Texas limestone, which was quarried near Austin. You can &lt;a href=&#34;http://books.google.com/books/about/Angels_on_high.html?id=oWhQAAAAMAAJ&#34; title=&#34;Angels on high: Márton Váró&#39;s limestone angels on the Nancy Lee and Perry R. Bass Performance Hall in Fort Worth, Texas&#34;&gt;read more about these amazing sculptures on Google Books&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/the-trumpets-sound.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/the-trumpets-sound.jpg&#34; alt=&#34;/images/post/the-trumpets-sound.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What Big Teeth you Have</title>
+      <link>http://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</link>
+      <pubDate>Mon, 18 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</guid>
+      <description>
+
+&lt;p&gt;I have been experimenting with a number of different photography techniques, one of those is &lt;a href=&#34;http://glyndewisblog.com/2010/01/19/the-invisible-black-backdrop-photography-technique/&#34; title=&#34;The Invisible Black Backdrop&#34;&gt;the invisible black backdrop&lt;/a&gt;.  Using this technique, I decided to follow my chihuahua around and generally annoy him with my flash.  The result was a yawn captured at just the right moment.  Isn&amp;rsquo;t he just so vicious?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/what-big-teeth-you-have.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/what-big-teeth-you-have.jpg&#34; alt=&#34;/images/post/what-big-teeth-you-have.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-stevegood-org-repository-visualized&#34;&gt;The SteveGood.org Repository Visualized&lt;/h2&gt;
+
+&lt;p&gt;A while back I found a &lt;a href=&#34;http://code.google.com/p/gource/&#34; title=&#34;Gource&#34;&gt;really interesting utility&lt;/a&gt; for visualizing the activity of a Git repository. Here&amp;rsquo;s a cool little video of the repo for this site as visualized by Gource.  Enjoy!&lt;/p&gt;
+
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/dMtlcLqXFwc&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sundance Court</title>
+      <link>http://www.stevegood.rocks/post/2012/06/17/sundance-court/</link>
+      <pubDate>Sun, 17 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/06/17/sundance-court/</guid>
+      <description>
+
+&lt;h2 id=&#34;father-s-day&#34;&gt;Father&amp;rsquo;s Day&lt;/h2&gt;
+
+&lt;p&gt;To all the father&amp;rsquo;s out there, including my own, happy Father&amp;rsquo;s Day! Kids, if you know what&amp;rsquo;s good for you you&amp;rsquo;ll wait on dad hand and foot! No, really.&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/h6sj89xgnl4&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;sundance-court&#34;&gt;Sundance Court&lt;/h2&gt;
+
+&lt;p&gt;I grabbed this shot while doing research for a future photowalk around Fort Worth. It was a little bit of a surprise for me since I found this on a street that was more of an alley. It is located behind Risky&amp;rsquo;s BBQ at Sundance Square.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/sundance-court.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/sundance-court.jpg&#34; alt=&#34;/images/post/sundance-court.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Milk Silo</title>
+      <link>http://www.stevegood.rocks/post/2012/06/16/the-milk-silo/</link>
+      <pubDate>Sat, 16 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/06/16/the-milk-silo/</guid>
+      <description>
+
+&lt;h2 id=&#34;grunge-portraits-hours-of-fun&#34;&gt;Grunge + Portraits = Hours of Fun&lt;/h2&gt;
+
+&lt;p&gt;I started messing around with some techniques to add a feeling of grunge to a couple of the portraits in my library (nothing worth sharing yet) and found that I can&amp;rsquo;t get enough. I found a pretty good, if not fast, tutorial (below) on the basics of applying grunge to a photo. One thing to note, I don&amp;rsquo;t have &lt;a href=&#34;http://www.niksoftware.com/silverefexpro/usa/entry.php&#34; title=&#34;Silver Efex Pro&#34;&gt;one of the plugins&lt;/a&gt; this video uses but I was able to get the same effect by creating a new layer and desaurating it completely and messing around with the levels, curves and exposure.  It&amp;rsquo;s not as easy as the plugin filters but it costs way less.&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/b-9RhbTIjbM&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;the-milk-silo&#34;&gt;The Milk Silo&lt;/h2&gt;
+
+&lt;p&gt;I stopped on my way home from the office about a week ago and took a few shots of a park that I pass everyday. It is amazing how many power lines and other modern things there are in almost every frame I want to capture.  This was one of those rare shots where I was able to avoid the power lines and hide the pesky water towers and street lights. All-in-all, I like the final result.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/the-milk-silo.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/the-milk-silo.jpg&#34; alt=&#34;/images/post/the-milk-silo.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Some Kind of Date and Explore Fort Worth</title>
+      <link>http://www.stevegood.rocks/post/2012/06/15/some-kind-of-date-and-explore-fort-worth/</link>
+      <pubDate>Fri, 15 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/06/15/some-kind-of-date-and-explore-fort-worth/</guid>
+      <description>
+
+&lt;h2 id=&#34;explore-fort-worth&#34;&gt;Explore Fort Worth&lt;/h2&gt;
+
+&lt;p&gt;Over the next few weekends I&amp;rsquo;ll be in or around downtown Fort Worth doing research for a photowalk. If you would like to join me be sure to follow me on &lt;a href=&#34;http://twitter.com/stevegood&#34; title=&#34;@stevegood&#34;&gt;Twitter&lt;/a&gt; or circle me on &lt;a href=&#34;https://plus.google.com/116109245550336437500/posts&#34; title=&#34;G+&#34;&gt;Google+&lt;/a&gt; to get the details of where I will be and when I will be there.&lt;/p&gt;
+
+&lt;p&gt;The first exploration will be June &lt;strike&gt;15th&lt;/strike&gt; 16th, 2012 at 5pm and I will be starting at the &lt;a href=&#34;http://goo.gl/maps/XESy&#34;&gt;little park between Bluff St and Belknap&lt;/a&gt; (across from the court house) and working my way towards Sunset Square. If you are planning to come make sure to bring water and hydrate ahead of time, nobody needs to be getting dehydrated in the Texas heat. Comment below with questions or to let me know you will be joining me (that way I don&amp;rsquo;t just take off and leave you behind). Also, street parking is generally free on the weekends after 6 or 7 but space is limited so you may want to be there early to find a parking spot. Also, if anyone joins me, we can head over to the Flying Saucer afterwards for drinks and german food.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;UPDATE: I originally posted the wrong date. The correct date should have been June 16th (Saturday)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;some-kind-of-date&#34;&gt;Some Kind of Date&lt;/h2&gt;
+
+&lt;p&gt;While the Fort Worth Water Gardens were awesome for me to visit not all people share my enthusiasm. Perhaps the next date will be better. Smile!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/some-kind-of-date.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/some-kind-of-date.jpg&#34; alt=&#34;/images/post/some-kind-of-date.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Secrets</title>
+      <link>http://www.stevegood.rocks/post/2012/06/14/secrets/</link>
+      <pubDate>Thu, 14 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.stevegood.rocks/post/2012/06/14/secrets/</guid>
+      <description>
+
+&lt;h2 id=&#34;chromatic-aberrations&#34;&gt;Chromatic Aberrations&lt;/h2&gt;
+
+&lt;p&gt;The last round of photos that I processed really gave me an opportunity to hone my skill at removing chromatic aberrations, those pesky purple lines that plague so many digital photos. Thanks to a technique I saw on YouTube (below) I was able to take care of them without degrading the quality of the photo.&lt;/p&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/dixMfNcVu-E&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;secrets&#34;&gt;Secrets&lt;/h2&gt;
+
+&lt;p&gt;Another photo taken at the Fort Worth Water Gardens. This was taken at the Quiet Pool just before sunset. I was really struck by how calm this space was, I almost felt out of place with my big tripod and camera.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/secrets.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/secrets.jpg&#34; alt=&#34;/images/post/secrets.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

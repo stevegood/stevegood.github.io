@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Simple URL Monitor Using Groovy and Twilio &middot;  Steve Good" />
+  	<meta property="og:site_name" content="Steve Good" />
+  	<meta property="og:url" content="http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2012-08-23T00:00:00Z" />
+
+    
+    <meta property="og:article:tag" content="programming" />
+    
+    <meta property="og:article:tag" content="groovy" />
+    
+    
+
+  <title>
+     Simple URL Monitor Using Groovy and Twilio &middot;  Steve Good
+  </title>
+
+    <meta name="description" content="Developer - Photographer - Human" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://www.stevegood.rocks/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://www.stevegood.rocks/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://www.stevegood.rocks/index.xml" rel="alternate" type="application/rss+xml" title="Steve Good" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.17" />
+
+    <link rel="canonical" href="http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-26916811-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Home</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://www.stevegood.rocks/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://www.stevegood.rocks/"><img src="http://www.stevegood.rocks/images/steve-avatar-dark.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Simple URL Monitor Using Groovy and Twilio</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2012-08-23T00:00:00Z">
+            Aug 23, 2012
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/programming/">#programming</a></span>
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/groovy/">#groovy</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.</p>
+
+<p>To start, I set some minimal requirements for myself.</p>
+
+<ul>
+<li>Needs to be easy to write, can&rsquo;t take more than an hour to build</li>
+<li>Needs to be easy to maintain, problems should be easy to find and fix</li>
+<li>Needs to be able to send SMS messages in case of outages</li>
+<li>Needs to be able to run standalone or on a server under cron</li>
+</ul>
+
+<p>When looking at the requirements I had to think about what kind of scripting environment would be best served for the task.  I had several options available to me each with pros and cons.</p>
+
+<ul>
+<li>bash
+
+<ul>
+<li>Pros
+
+<ul>
+<li>Runs natively on any *nix based system</li>
+</ul></li>
+<li>Cons
+
+<ul>
+<li>Extremely verbose</li>
+<li>Will not run on non *nix based systems</li>
+</ul></li>
+</ul></li>
+<li>Perl
+
+<ul>
+<li>Pros
+
+<ul>
+<li>I would be able to drudge up ancient knowledge that I had buried deep in the catacombs of my mind</li>
+</ul></li>
+<li>Cons
+
+<ul>
+<li>I don&rsquo;t have enough time to drudge up my ancient, and dusty, knowledge of Perl</li>
+<li>I would spend too much time trying to figure out how to do everything in a single line of code</li>
+</ul></li>
+</ul></li>
+<li>Groovy
+
+<ul>
+<li>Pros
+
+<ul>
+<li>I work with Groovy every day at work</li>
+<li>I can use Grape to supply dependencies using the <code>@Grab</code> annotation</li>
+<li>Code tends to be clean and simple</li>
+<li>Can be run on any system that has Groovy installed</li>
+</ul></li>
+<li>Cons
+
+<ul>
+<li>Must have Groovy installed</li>
+<li>It is a little slow to startup</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>It should be no surprise that I chose to use Groovy for this project.  For me, Groovy just fits the bill better in terms of code verbosity and features available.</p>
+
+<p>Building the script was a snap.  One of the cool things about shell scripting is that you are able to specify the binary that you want to use to execute your script. So by adding a single line of declaration I was able to create a script that can run as if it was a native executable.</p>
+
+<pre><code>#!/usr/bin/env groovy
+</code></pre>
+
+<p>After that it&rsquo;s just a matter of writing the code that does the work!  Lets start with the dependent libraries.</p>
+
+<p>First I needed to make sure I had the HTTP-Builder library.  Grape makes this a snap to get by letting me take advantage of the <code>@Grab</code> annotation. I just place the following towards the top of my script and like magic everything I need is available.</p>
+
+<pre><code class="language-groovy">@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.5.2')
+</code></pre>
+
+<p>I also need to make sure I have the Apache commons httpclient libraries.  I use another <code>@Grab</code> to do this.</p>
+
+<pre><code class="language-groovy">@Grab(group='commons-httpclient',module='commons-httpclient',version='3.1')
+</code></pre>
+
+<p>Grape is actually going out to the maven repositories and downloading the jars I requested and adding them to my classpath.  Pretty slick eh?</p>
+
+<p>I&rsquo;ll skip the imports (but you can check out the full source if those kinds of things excite you) and just straight to the guts of the script.</p>
+
+<p>Next, among other things, I wanted to make sure that the script was configurable enough that I could add a list of phone numbers and be able to easily specify the url to monitor. To do that I created a nice little HashMap of key value pairs.</p>
+
+<pre><code class="language-groovy">def now = new Date()
+def options = [
+  server: &quot;https://google.com/&quot;,
+  intervalSeconds: 600,
+  sid: &quot;&quot;,
+  authToken: &quot;&quot;,
+  fromPhone: &quot;&quot;,
+  toPhone: &quot;&quot;,
+  smsOnStart: false,
+  smsOnStartMessage: &quot;Site monitoring script started at ${now.format('H:mm:ss')} on ${now.format('yyyy-MM-dd')}&quot;
+]
+</code></pre>
+
+<p>Ok, so options are great, but without some functionality they really mean nothing. Next I define two functions.</p>
+
+<p>Here&rsquo;s the method that sends the SMS.</p>
+
+<pre><code class="language-groovy">def sendSMS(def message, def opts){
+  if (opts.sid != &quot;&quot; &amp;&amp; opts.authToken != &quot;&quot; &amp;&amp; message != &quot;&quot;){
+    String twilioHost = &quot;api.twilio.com&quot;
+    String sid = opts.sid
+    String authToken = opts.authToken
+
+    def hc = new HostConfiguration()
+    hc.setHost(twilioHost, 443, &quot;https&quot;)
+    def url = &quot;/2010-04-01/Accounts/$sid/SMS/Messages&quot;
+
+    def client = new HttpClient()
+    Credentials defaultcreds = new UsernamePasswordCredentials(sid, authToken)
+    client.getState().setCredentials(null, null, defaultcreds)
+
+    opts.toPhone.split(',')?.each { toPhn -&gt;
+      PostMethod postMethod = new PostMethod(url)
+      postMethod.addParameter(&quot;IfMachine&quot;,&quot;Continue&quot;)
+      postMethod.addParameter(&quot;Method&quot;,&quot;POST&quot;)
+      postMethod.addParameter(&quot;From&quot;,opts.fromPhone)
+      postMethod.addParameter(&quot;To&quot;,toPhn)
+      postMethod.addParameter(&quot;Body&quot;,message)
+
+      client.executeMethod(hc, postMethod)
+
+      postMethod.releaseConnection()
+    }
+  }
+}
+</code></pre>
+
+<p>And here&rsquo;s the method that checks the status of the url.</p>
+
+<pre><code class="language-groovy">def doPing(def opts) {
+  if (opts.server != &quot;&quot;){
+    try {
+      new HTTPBuilder( opts.server ).get( path:'' ) { response -&gt;
+        def msg = &quot;&quot;
+        if (response.statusLine.statusCode == 200){
+          msg = &quot;${new Date()} :: UP!&quot;
+          println msg
+        } else {
+          msg = &quot;${new Date()} :: There might be a production problem! -&gt; ${response.statusLine.statusCode}&quot;
+          println msg
+          sendSMS(msg,opts)
+        }
+      }
+    } catch( e ){
+      println &quot;${new Date()}&quot;
+      e.printStackTrace()
+      sendSMS(&quot;There was an error when connecting to the production server, it might be down.&quot;,opts)
+    }
+
+    if (opts.intervalSeconds &gt; 0){
+      def then = new Date()
+      then.seconds += opts.intervalSeconds
+      println &quot;Checking again at ${then}&quot;
+      while (new Date() &lt;= then){
+        // do nothing
+      }
+
+      doPing( opts )
+    }
+  }
+}
+</code></pre>
+
+<p>Since these are both method declarations and they won&rsquo;t just call themselves we need to do one last thing, call the doPing method.</p>
+
+<pre><code class="language-groovy">if (options.smsOnStart){
+  sendSMS(options.smsOnStartMessage,options)
+}
+
+doPing( options )
+</code></pre>
+
+<p>That&rsquo;s the whole script! If you are interested in looking at or using the script <a href="https://github.com/stevegood/groovy-url-monitor">Github&rsquo;s</a> going to be the best place to do that. With comments and code the whole thing come to a mere 106 lines of code! Not bad for something that monitors a URL and then sends an SMS when there is a problem.</p>
+
+<p>I know I glossed over how the methods actually work but I felt they were pretty self explanatory. Feel free to ask questions in the comments if you would like further explanation.</p>
+
+<p>Thanks for reading!</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="http://www.stevegood.rocks/" style="background-image: url(http://www.stevegood.rocks/images/steve-avatar-dark.png)"><span class="hidden">Steve Good's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://www.stevegood.rocks/">Steve Good</a></h4>
+  
+  <p>Professional software engineer, amatuer photographer, and part-time mountain biker.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">San Diego, CA</span>
+    <span class="author-link icon-link"><a href="http://stevegood.rocks">http://stevegood.rocks</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Simple%20URL%20Monitor%20Using%20Groovy%20and%20Twilio&nbsp;-&nbsp;Steve%20Good&amp;url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2012%2f08%2f23%2fsimple-url-monitor-using-groovy-and-twilio%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2012%2f08%2f23%2fsimple-url-monitor-using-groovy-and-twilio%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2012%2f08%2f23%2fsimple-url-monitor-using-groovy-and-twilio%2f&amp;description=Simple%20URL%20Monitor%20Using%20Groovy%20and%20Twilio"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2012%2f08%2f23%2fsimple-url-monitor-using-groovy-and-twilio%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'stevegood';
+  var disqus_url = 'http:\/\/www.stevegood.rocks\/post\/2012\/08\/23\/simple-url-monitor-using-groovy-and-twilio\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Steve Good</a> </section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/jquery.js"></script>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/index.js"></script>
+    
+</body>
+</html>
+

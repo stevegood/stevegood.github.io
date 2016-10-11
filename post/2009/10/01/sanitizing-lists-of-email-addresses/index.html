@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Sanitizing Lists of Email Addresses &middot;  Steve Good" />
+  	<meta property="og:site_name" content="Steve Good" />
+  	<meta property="og:url" content="http://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2009-10-01T00:00:00Z" />
+
+    
+    <meta property="og:article:tag" content="coldfusion" />
+    
+    <meta property="og:article:tag" content="regex" />
+    
+    
+
+  <title>
+     Sanitizing Lists of Email Addresses &middot;  Steve Good
+  </title>
+
+    <meta name="description" content="Developer - Photographer - Human" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://www.stevegood.rocks/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://www.stevegood.rocks/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://www.stevegood.rocks/index.xml" rel="alternate" type="application/rss+xml" title="Steve Good" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.17" />
+
+    <link rel="canonical" href="http://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-26916811-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Home</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://www.stevegood.rocks/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://www.stevegood.rocks/"><img src="http://www.stevegood.rocks/images/steve-avatar-dark.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Sanitizing Lists of Email Addresses</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2009-10-01T00:00:00Z">
+            Oct 1, 2009
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/coldfusion/">#coldfusion</a></span>
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/regex/">#regex</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>I ran across an exception today where an email address was not being validated on submit or server side.  Obviously this is something that needs to be done, but what about when you have a list of email addresses?  The app I&rsquo;m working on is old and lacks validation in most of the key areas.  To combat this I created a method in a util object that will loop over a list of email addresses and validate each one by removing anything that does not match an email address structure.</p>
+
+<p>The method is pretty simple.  It loops over the supplied list, applies some regex to locate the first email address within the string, appends it to a new list that is returned.  See below.</p>
+
+<pre><code class="language-coldfusion">&lt;cffunction name=&quot;sanitizeEmailList&quot; access=&quot;public&quot; returnType=&quot;String&quot; output=&quot;false&quot;&gt;
+    &lt;cfargument name=&quot;emailList&quot; type=&quot;String&quot; required=&quot;true&quot; /&gt;
+
+		&lt;cfset var local = {} /&gt;
+    &lt;cfset local.email = '' /&gt;
+    &lt;cfset local.RegEx = &quot;[a-z0-9!##$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!##$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?&quot;/&gt;
+
+		&lt;cfloop list=&quot;#arguments.emailList#&quot; index=&quot;local.i&quot;&gt;
+        &lt;cfset local.address = ReMatch(local.RegEx,local.i)/&gt;
+        &lt;cfif ArrayLen(local.address)&gt;
+            &lt;cfset local.email = ListAppend(local.email,local.address[1]) /&gt;
+        &lt;/cfif&gt;
+    &lt;/cfloop&gt;
+
+		&lt;cfreturn local.email /&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>This is by no means an excuse to not validate form input, but it does help me get through some pretty ugly legacy code.</p>
+
+<p><em>Update: I swapped out the regex used for one that was shared with me by <a href="http://twitter.com/Clarkee21">James</a> via Twitter.  My regex would have failed on any addresses that were formatted as my.address+filter@gmail.com.  My regex would have dropped anything from the + back.  Using his this no longer becomes an issue.</em></p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="http://www.stevegood.rocks/" style="background-image: url(http://www.stevegood.rocks/images/steve-avatar-dark.png)"><span class="hidden">Steve Good's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://www.stevegood.rocks/">Steve Good</a></h4>
+  
+  <p>Professional software engineer, amatuer photographer, and part-time mountain biker.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">San Diego, CA</span>
+    <span class="author-link icon-link"><a href="http://stevegood.rocks">http://stevegood.rocks</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Sanitizing%20Lists%20of%20Email%20Addresses&nbsp;-&nbsp;Steve%20Good&amp;url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2009%2f10%2f01%2fsanitizing-lists-of-email-addresses%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2009%2f10%2f01%2fsanitizing-lists-of-email-addresses%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2009%2f10%2f01%2fsanitizing-lists-of-email-addresses%2f&amp;description=Sanitizing%20Lists%20of%20Email%20Addresses"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2009%2f10%2f01%2fsanitizing-lists-of-email-addresses%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'stevegood';
+  var disqus_url = 'http:\/\/www.stevegood.rocks\/post\/2009\/10\/01\/sanitizing-lists-of-email-addresses\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Steve Good</a> </section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/jquery.js"></script>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/index.js"></script>
+    
+</body>
+</html>
+
