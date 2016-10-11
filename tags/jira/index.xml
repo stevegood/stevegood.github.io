@@ -127,7 +127,7 @@
 
 &lt;p&gt;Once you have JIRA running you should be able to see that your plugin has loaded from the &lt;a href=&#34;http://localhost:2990/jira/plugins/servlet/upm&#34;&gt;Manage Addons&lt;/a&gt; screen.  You should see something similar to the this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/manage-addons-my-groovy-plugin.png&#34; alt=&#34;manage-addons-my-groovy-plugin&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/manage-addons-my-groovy-plugin.png&#34; alt=&#34;manage-addons-my-groovy-plugin&#34; /&gt;&lt;/p&gt;
 </description>
         </item>
       
