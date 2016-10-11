@@ -6,8 +6,24 @@
     <description>Recent content on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Oct 2016 14:11:01 -0700</lastBuildDate>
     <atom:link href="http://www.stevegood.rocks/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About Steve</title>
+      <link>http://www.stevegood.rocks/about/</link>
+      <pubDate>Tue, 11 Oct 2016 14:11:01 -0700</pubDate>
+      
+      <guid>http://www.stevegood.rocks/about/</guid>
+      <description>&lt;p&gt;Connect with me on social media.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/stevegood&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/stevegood&#34;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitch.tv/extrememoderation&#34;&gt;Twitch.tv&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Using Groovy to write Atlassian plugins</title>
@@ -548,28 +564,6 @@ doPing( options )
 &lt;p&gt;While the Fort Worth Water Gardens were awesome for me to visit not all people share my enthusiasm. Perhaps the next date will be better. Smile!&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/some-kind-of-date.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/some-kind-of-date.jpg&#34; alt=&#34;/images/post/some-kind-of-date.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Secrets</title>
-      <link>http://www.stevegood.rocks/post/2012/06/14/secrets/</link>
-      <pubDate>Thu, 14 Jun 2012 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.stevegood.rocks/post/2012/06/14/secrets/</guid>
-      <description>
-
-&lt;h2 id=&#34;chromatic-aberrations&#34;&gt;Chromatic Aberrations&lt;/h2&gt;
-
-&lt;p&gt;The last round of photos that I processed really gave me an opportunity to hone my skill at removing chromatic aberrations, those pesky purple lines that plague so many digital photos. Thanks to a technique I saw on YouTube (below) I was able to take care of them without degrading the quality of the photo.&lt;/p&gt;
-
-&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/dixMfNcVu-E&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;h2 id=&#34;secrets&#34;&gt;Secrets&lt;/h2&gt;
-
-&lt;p&gt;Another photo taken at the Fort Worth Water Gardens. This was taken at the Quiet Pool just before sunset. I was really struck by how calm this space was, I almost felt out of place with my big tripod and camera.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.stevegood.rocks/images/post/secrets.jpg&#34;&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/secrets.jpg&#34; alt=&#34;/images/post/secrets.jpg&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
