@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Steve Good </title>
+    <title>Steve Good</title>
     <link>http://www.stevegood.rocks/tags/regex/index.xml</link>
+    <description>Recent content on Steve Good</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author></author>
-    <rights>(C) 2016</rights>
-    <updated>0001-01-01 00:00:00 &#43;0000 UTC</updated>
-
+    <atom:link href="http://www.stevegood.rocks/tags/regex/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Sanitizing Lists of Email Addresses</title>
+      <link>http://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</link>
+      <pubDate>Thu, 01 Oct 2009 00:00:00 +0000</pubDate>
       
-        <item>
-          <title>Sanitizing Lists of Email Addresses</title>
-          <link>http://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</link>
-          <pubDate>Thu, 01 Oct 2009 00:00:00 UTC</pubDate>
-          <author></author>
-          <guid>http://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</guid>
-          <description>&lt;p&gt;I ran across an exception today where an email address was not being validated on submit or server side.  Obviously this is something that needs to be done, but what about when you have a list of email addresses?  The app I&amp;rsquo;m working on is old and lacks validation in most of the key areas.  To combat this I created a method in a util object that will loop over a list of email addresses and validate each one by removing anything that does not match an email address structure.&lt;/p&gt;
+      <guid>http://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</guid>
+      <description>&lt;p&gt;I ran across an exception today where an email address was not being validated on submit or server side.  Obviously this is something that needs to be done, but what about when you have a list of email addresses?  The app I&amp;rsquo;m working on is old and lacks validation in most of the key areas.  To combat this I created a method in a util object that will loop over a list of email addresses and validate each one by removing anything that does not match an email address structure.&lt;/p&gt;
 
 &lt;p&gt;The method is pretty simple.  It loops over the supplied list, applies some regex to locate the first email address within the string, appends it to a new list that is returned.  See below.&lt;/p&gt;
 
@@ -42,9 +40,7 @@
 
 &lt;p&gt;&lt;em&gt;Update: I swapped out the regex used for one that was shared with me by &lt;a href=&#34;http://twitter.com/Clarkee21&#34;&gt;James&lt;/a&gt; via Twitter.  My regex would have failed on any addresses that were formatted as my.address+filter@gmail.com.  My regex would have dropped anything from the + back.  Using his this no longer becomes an issue.&lt;/em&gt;&lt;/p&gt;
 </description>
-        </item>
-      
+    </item>
     
-
   </channel>
 </rss>

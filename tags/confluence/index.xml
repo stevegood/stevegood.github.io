@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Steve Good </title>
+    <title>Steve Good</title>
     <link>http://www.stevegood.rocks/tags/confluence/index.xml</link>
+    <description>Recent content on Steve Good</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author></author>
-    <rights>(C) 2016</rights>
-    <updated>0001-01-01 00:00:00 &#43;0000 UTC</updated>
-
+    <atom:link href="http://www.stevegood.rocks/tags/confluence/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Using Groovy to write Atlassian plugins</title>
+      <link>http://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</link>
+      <pubDate>Tue, 27 Sep 2016 00:00:00 +0000</pubDate>
       
-        <item>
-          <title>Using Groovy to write Atlassian plugins</title>
-          <link>http://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</link>
-          <pubDate>Tue, 27 Sep 2016 00:00:00 UTC</pubDate>
-          <author></author>
-          <guid>http://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</guid>
-          <description>
+      <guid>http://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</guid>
+      <description>
 
 &lt;p&gt;Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation).  But using Java can be overly verbose and less flexible than some other more modern languages.  There are examples of writing plugins using &lt;a href=&#34;https://bitbucket.org/ssaasen/atlassian-scala-example-plugin&#34;&gt;Scala&lt;/a&gt; and &lt;a href=&#34;https://bitbucket.org/ssaasen/atlassian-jruby-example-plugin&#34;&gt;JRuby&lt;/a&gt; out there but documentation for using &lt;a href=&#34;http://groovy-lang.org/&#34;&gt;Groovy&lt;/a&gt; seems to be a bit of a black hole.  Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.&lt;/p&gt;
 
@@ -129,9 +127,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://www.stevegood.rocks/images/post/manage-addons-my-groovy-plugin.png&#34; alt=&#34;manage-addons-my-groovy-plugin&#34; /&gt;&lt;/p&gt;
 </description>
-        </item>
-      
+    </item>
     
-
   </channel>
 </rss>

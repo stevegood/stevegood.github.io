@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Steve Good </title>
+    <title>Steve Good</title>
     <link>http://www.stevegood.rocks/tags/ios/index.xml</link>
+    <description>Recent content on Steve Good</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author></author>
-    <rights>(C) 2016</rights>
-    <updated>0001-01-01 00:00:00 &#43;0000 UTC</updated>
-
+    <atom:link href="http://www.stevegood.rocks/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Uploading an image from iOS 5</title>
+      <link>http://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</link>
+      <pubDate>Thu, 23 Feb 2012 00:00:00 +0000</pubDate>
       
-        <item>
-          <title>Uploading an image from iOS 5</title>
-          <link>http://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</link>
-          <pubDate>Thu, 23 Feb 2012 00:00:00 UTC</pubDate>
-          <author></author>
-          <guid>http://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</guid>
-          <description>&lt;p&gt;Lately I&amp;rsquo;ve been working steadily towards getting an iOS app released for my company, &lt;a href=&#34;http://kainexus.com/&#34;&gt;KaiNexus&lt;/a&gt;.  The first pass at this app will have the basic ability to submit an idea from your phone and be able to attach a picture.  Since I am still a novice with Objective-C it was no surprise when I ran into a brick wall when trying to upload the image from the app.  This prompted me to&lt;a href=&#34;http://stackoverflow.com/questions/9419744/uploading-an-image-from-ios-to-grails&#34;&gt; ask on stackoverflow&lt;/a&gt; to see what I had done wrong.&lt;/p&gt;
+      <guid>http://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</guid>
+      <description>&lt;p&gt;Lately I&amp;rsquo;ve been working steadily towards getting an iOS app released for my company, &lt;a href=&#34;http://kainexus.com/&#34;&gt;KaiNexus&lt;/a&gt;.  The first pass at this app will have the basic ability to submit an idea from your phone and be able to attach a picture.  Since I am still a novice with Objective-C it was no surprise when I ran into a brick wall when trying to upload the image from the app.  This prompted me to&lt;a href=&#34;http://stackoverflow.com/questions/9419744/uploading-an-image-from-ios-to-grails&#34;&gt; ask on stackoverflow&lt;/a&gt; to see what I had done wrong.&lt;/p&gt;
 
 &lt;p&gt;As it turns out, I was using an incorrect combination of line endings and content types.  I now have working code in my app and figured I would share it so that anyone else running into this problem would have a starting point.  Below is the function I wrote to handle uploading an image in Objective-C on iOS 5 (the grails pieces can be found on the &lt;a href=&#34;http://stackoverflow.com/questions/9419744/uploading-an-image-from-ios-to-grails&#34;&gt;SO question&lt;/a&gt;).&lt;/p&gt;
 
@@ -46,9 +44,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;
 </description>
-        </item>
-      
+    </item>
     
-
   </channel>
 </rss>

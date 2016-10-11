@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Steve Good </title>
+    <title>Steve Good</title>
     <link>http://www.stevegood.rocks/tags/python/index.xml</link>
+    <description>Recent content on Steve Good</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author></author>
-    <rights>(C) 2016</rights>
-    <updated>0001-01-01 00:00:00 &#43;0000 UTC</updated>
-
+    <atom:link href="http://www.stevegood.rocks/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Using Dropbox as a Distributed Backup</title>
+      <link>http://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</link>
+      <pubDate>Sat, 22 Oct 2011 00:00:00 +0000</pubDate>
       
-        <item>
-          <title>Using Dropbox as a Distributed Backup</title>
-          <link>http://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</link>
-          <pubDate>Sat, 22 Oct 2011 00:00:00 UTC</pubDate>
-          <author></author>
-          <guid>http://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</guid>
-          <description>
+      <guid>http://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</guid>
+      <description>
 
 &lt;p&gt;A while back I made some improvements to the backup scheme we use at &lt;a href=&#34;http://kainexus.com/&#34;&gt;KaiNexus&lt;/a&gt;. The requirements were pretty simple and straight forward. All our backups had to be encrypted, offsite and distributed. While there are a number of for-pay backup solutions out there we were looking for the bare minimum and free solution.&lt;/p&gt;
 
@@ -207,9 +205,7 @@ update-rc.d dropbox defaults
 
 &lt;p&gt;You should now have Dropbox running as a service on your server. All that&amp;rsquo;s left is to create your cron jobs that run your backup scripts and have those backup files placed into the /etc/dropbox/Dropbox folder.&lt;/p&gt;
 </description>
-        </item>
-      
+    </item>
     
-
   </channel>
 </rss>

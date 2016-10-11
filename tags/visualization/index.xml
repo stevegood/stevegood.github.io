@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Steve Good </title>
+    <title>Steve Good</title>
     <link>http://www.stevegood.rocks/tags/visualization/index.xml</link>
+    <description>Recent content on Steve Good</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author></author>
-    <rights>(C) 2016</rights>
-    <updated>0001-01-01 00:00:00 &#43;0000 UTC</updated>
-
+    <atom:link href="http://www.stevegood.rocks/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>What Big Teeth you Have</title>
+      <link>http://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</link>
+      <pubDate>Mon, 18 Jun 2012 00:00:00 +0000</pubDate>
       
-        <item>
-          <title>What Big Teeth you Have</title>
-          <link>http://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</link>
-          <pubDate>Mon, 18 Jun 2012 00:00:00 UTC</pubDate>
-          <author></author>
-          <guid>http://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</guid>
-          <description>
+      <guid>http://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</guid>
+      <description>
 
 &lt;p&gt;I have been experimenting with a number of different photography techniques, one of those is &lt;a href=&#34;http://glyndewisblog.com/2010/01/19/the-invisible-black-backdrop-photography-technique/&#34; title=&#34;The Invisible Black Backdrop&#34;&gt;the invisible black backdrop&lt;/a&gt;.  Using this technique, I decided to follow my chihuahua around and generally annoy him with my flash.  The result was a yawn captured at just the right moment.  Isn&amp;rsquo;t he just so vicious?&lt;/p&gt;
 
@@ -28,9 +26,7 @@
 
 &lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/dMtlcLqXFwc&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
 </description>
-        </item>
-      
+    </item>
     
-
   </channel>
 </rss>

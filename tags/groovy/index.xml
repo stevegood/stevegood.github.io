@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Steve Good </title>
+    <title>Steve Good</title>
     <link>http://www.stevegood.rocks/tags/groovy/index.xml</link>
+    <description>Recent content on Steve Good</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author></author>
-    <rights>(C) 2016</rights>
-    <updated>0001-01-01 00:00:00 &#43;0000 UTC</updated>
-
+    <atom:link href="http://www.stevegood.rocks/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Simple URL Monitor Using Groovy and Twilio</title>
+      <link>http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
+      <pubDate>Thu, 23 Aug 2012 00:00:00 +0000</pubDate>
       
-        <item>
-          <title>Simple URL Monitor Using Groovy and Twilio</title>
-          <link>http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
-          <pubDate>Thu, 23 Aug 2012 00:00:00 UTC</pubDate>
-          <author></author>
-          <guid>http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
-          <description>&lt;p&gt;Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.&lt;/p&gt;
+      <guid>http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
+      <description>&lt;p&gt;Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.&lt;/p&gt;
 
 &lt;p&gt;To start, I set some minimal requirements for myself.&lt;/p&gt;
 
@@ -203,9 +201,7 @@ doPing( options )
 
 &lt;p&gt;Thanks for reading!&lt;/p&gt;
 </description>
-        </item>
-      
+    </item>
     
-
   </channel>
 </rss>
