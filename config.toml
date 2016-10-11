@@ -1,0 +1,22 @@
+title = "Steve Good"
+languageCode = "en-us"
+baseurl = "http://www.stevegood.rocks/"
+theme = "hugo_theme_robust"
+MetaDataFormat = "yaml"
+
+googleAnalytics = "UA-26916811-1"
+disqusShortname = "stevegood"
+
+[params]
+  author = "Steve Good"
+  avatar = "/images/steve-avatar.png"
+  description = "Photographer, Developer, Human"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = -200
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = -180
