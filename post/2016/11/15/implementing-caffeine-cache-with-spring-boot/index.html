@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Implementing Caffeine Cache with Spring Boot &middot;  Steve Good" />
+  	<meta property="og:site_name" content="Steve Good" />
+  	<meta property="og:url" content="http://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-11-15T14:55:39-08:00" />
+
+    
+    <meta property="og:article:tag" content="post" />
+    
+    <meta property="og:article:tag" content="spring boot" />
+    
+    <meta property="og:article:tag" content="caffeine" />
+    
+    <meta property="og:article:tag" content="cache" />
+    
+    <meta property="og:article:tag" content="java" />
+    
+    <meta property="og:article:tag" content="groovy" />
+    
+    
+
+  <title>
+     Implementing Caffeine Cache with Spring Boot &middot;  Steve Good
+  </title>
+
+    <meta name="description" content="Developer - Photographer - Human" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://www.stevegood.rocks/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://www.stevegood.rocks/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://www.stevegood.rocks/index.xml" rel="alternate" type="application/rss+xml" title="Steve Good" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.18-DEV" />
+
+    <link rel="canonical" href="http://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/">Blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="/about">About Me</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://www.stevegood.rocks/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+  
+  <header class="main-header post-head" style="background-image: url(http://www.stevegood.rocks/images/post/spring-boot-hearts-caffeine.gif)">
+  
+  <nav class="main-nav overlay clearfix">
+
+
+  
+      <a class="blog-logo" href="http://www.stevegood.rocks/"><img src="http://www.stevegood.rocks/images/steve-avatar-dark.png" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Implementing Caffeine Cache with Spring Boot</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-11-15T14:55:39-08:00">
+            Nov 15, 2016
+          </time>
+        
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/post/">#post</a></span>
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/spring-boot/">#spring boot</a></span>
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/caffeine/">#caffeine</a></span>
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/cache/">#cache</a></span>
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/java/">#java</a></span>
+         
+          <span class="post-tag small"><a href="http://www.stevegood.rocks/tags/groovy/">#groovy</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>Implementing a cache, even a basic one, used to require lots of architectural discussion, meetings, evaluations, and a significant amount of development time. With <a href="http://projects.spring.io/spring-boot/">Spring Boot</a>, those days are far behind us! With a small amount of configuration, dependency management, and a few annotations any developer can have caching set up in their application in a few minutes.</p>
+
+<h2 id="generating-a-new-application">Generating a new application</h2>
+
+<p>Using either the <a href="http://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-installing-spring-boot.html#getting-started-sdkman-cli-installation">Spring Boot CLI</a> or the <a href="https://start.spring.io">Spring Initializr</a>, create a new application using the following (unless specified, use the defaults):</p>
+
+<ul>
+<li>Gradle Project
+
+<ul>
+<li>You could use Maven also, just replace the <code>./gradlew</code> commands with <code>mvn</code></li>
+</ul></li>
+<li>Version: <em>1.4.2</em>
+
+<ul>
+<li>Higher versions should also work, this was just the most current version as of this writing</li>
+</ul></li>
+<li>Language: <em>Groovy</em>
+
+<ul>
+<li>Not required but I prefer writing less verbose code</li>
+</ul></li>
+<li>Packages
+
+<ul>
+<li>Cache <em>(Core)</em></li>
+<li>Web <em>(Web)</em></li>
+<li>Thymeleaf <em>(Template Engines)</em></li>
+</ul></li>
+</ul>
+
+<h2 id="write-a-simple-web-app">Write a simple web app</h2>
+
+<p>For this demo we are going to build a simple HTML page that displays the current time. Exciting right?! For this, we will need a build a controller and a view.</p>
+
+<h3 id="the-controller-and-the-view">The controller and the view</h3>
+
+<p>Create a new Groovy class in the <code>com.example</code> package named <strong>TimeController</strong> with the following content.</p>
+
+<pre><code class="language-groovy">package com.example
+
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.RequestMapping
+
+@Controller
+class TimeController {
+    
+    @RequestMapping
+    def index(Model model) {
+        model.addAllAttributes now: (new Date().time)
+        'index'
+    }
+    
+}
+</code></pre>
+
+<p>Next, create the view in <code>src/main/resources/templates</code> directory and named <strong>index.html</strong> with the following content.</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;Caffeine Cache Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p th:text=&quot;'Now: ' + ${now}&quot;/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="run-the-application">Run the application</h3>
+
+<p>From a terminal, use the Gradle wrapper to start the application.</p>
+
+<p><code>./gradlew bootRun</code></p>
+
+<p>Once the application has started up, you should be able to view it running at <a href="http://localhost:8080/">localhost:8080</a>. The page should show the current time in milliseconds.  Each time you refresh the page the time should be updated.</p>
+
+<h2 id="add-basic-cache-functionality">Add basic cache functionality</h2>
+
+<p>We already added the dependency for Spring Cache all we need to do now is enable the cache and cache something. This is the easy part. Well, all of it is the easy part.</p>
+
+<h3 id="enable-caching">Enable caching</h3>
+
+<p>Modify <code>com.example.DemoApplication</code> so that it matches the following (note the <code>@EnableCaching</code>)</p>
+
+<pre><code class="language-groovy">package com.example
+
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.cache.annotation.EnableCaching
+
+@SpringBootApplication
+@EnableCaching
+class DemoApplication {
+
+	static void main(String[] args) {
+		SpringApplication.run DemoApplication, args
+	}
+}
+</code></pre>
+
+<h3 id="create-a-service-for-getting-time">Create a service for getting time</h3>
+
+<p>We want to better encapsulate how our application gets time. This will help us apply caching in a more organized way.</p>
+
+<p>Create a Groovy class in the <code>com.example</code> package named <strong>TimeService</strong> with the following content.</p>
+
+<pre><code class="language-groovy">package com.example
+
+import org.springframework.stereotype.Service
+
+@Service
+class TimeService {
+
+    long getTimeNow() {
+        new Date().time
+    }
+
+}
+</code></pre>
+
+<p>Modify the <code>com.example.TimeController</code> class to get the current time from the TimeService. Note the addition of <code>TimeService</code> being autowired as well as the call to <code>timeService.timeNow</code> in the map of attributes being added to the model.</p>
+
+<pre><code class="language-groovy">package com.example
+
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.RequestMapping
+
+@Controller
+class TimeController {
+
+    @Autowired
+    TimeService timeService
+
+    @RequestMapping
+    def index(Model model) {
+        model.addAllAttributes now: timeService.timeNow
+        'index'
+    }
+
+}
+</code></pre>
+
+<h3 id="add-a-cached-method">Add a cached method</h3>
+
+<p>Running the application at this point will yield the same behavior we had previously. We have not added anything to that needs to be cached. Lets do that now. In the <code>com.example.TimeService</code> class add a new method named <em>getTimeCached</em> and have it return a call to <em>getTimeNow</em>. Lets also add a new annotation, <code>@Cacheable</code> to the method that tells Spring Boot to cache the results of the method. It should now look like the following.</p>
+
+<pre><code class="language-groovy">package com.example
+
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.stereotype.Service
+
+@Service
+class TimeService {
+
+    long getTimeNow() {
+        new Date().time
+    }
+    
+    @Cacheable('timeCached')
+    long getTimeCached() {
+        timeNow
+    }
+
+}
+</code></pre>
+
+<p>By adding the <code>@Cacheable</code> annotation to the method, we are instructing Spring Boot to manage a HashMap cache with the method&rsquo;s result. The name <em>timeCached</em> in the annotation is the name of the cache key we want to use. This makes things easier when you want to manipulate specific cached data.</p>
+
+<h3 id="use-the-cached-method-and-render-the-result-in-the-view">Use the cached method and render the result in the view</h3>
+
+<p>The last step is to start using the new method and render its result in the view. Back in the <code>com.example.TimeController</code> class, add a new key to the attributes map.  It should now look like this:</p>
+
+<pre><code class="language-groovy">model.addAllAttributes now: timeService.timeNow, cached: timeService.timeCached
+</code></pre>
+
+<p>And in <code>src/resources/templates/index.html</code> add the following line above the closing <code>&lt;/body&gt;</code> tag.</p>
+
+<pre><code class="language-html">&lt;p th:text=&quot;'Cached: ' + ${cached}&quot;/&gt;
+</code></pre>
+
+<h3 id="test-it-out">Test it out</h3>
+
+<p>Restart the application and refresh the page in your browser.  You&rsquo;ll notice that in addition to the time now we are also showing the cached time. If you refresh the page only the time now will change and the cached time will stay the same indefinitely. Congratulations, now you&rsquo;re caching with ease!</p>
+
+<h2 id="improve-caching-with-caffeine">Improve caching with Caffeine</h2>
+
+<p>Having a cache that lives for the life of the application might fit your use case but it also comes with some issues. What if the data you are caching changes over time? What if you want to control the size of the cache? In this section, we are going to implement a cache library called <a href="https://github.com/ben-manes/caffeine">Caffeine</a>. Caffeine is an in-memory cache aimed at replacing Google&rsquo;s Guava. It is high performance and light weight, perfect for our simple application.</p>
+
+<h3 id="add-the-caffeine-library-to-the-application">Add the Caffeine library to the application</h3>
+
+<p>In your <code>build.gradle</code> file, add the following line to the <em>dependencies</em> block.</p>
+
+<pre><code class="language-groovy">compile 'com.github.ben-manes.caffeine:caffeine:2.3.5'
+</code></pre>
+
+<p>Maven users can add the following to their <code>pom.xml</code>.</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.github.ben-manes.caffeine&lt;/groupId&gt;
+    &lt;artifactId&gt;caffeine&lt;/artifactId&gt;
+    &lt;version&gt;2.3.5&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>Technically that is all you need to do for Spring Boot to start using Caffeine as the cache provider. However, it will operate exactly the same as before. Lets add some configuration to override the default behavior.</p>
+
+<h3 id="configure-caffeine">Configure Caffeine</h3>
+
+<p>By default Spring Boot comes with a configuration file named <em>application.properties</em> in the <code>src/resources</code> directory. I am not a fan of typing the same words over and over again so I prefer to use YAML (you can read more about Spring Boot&rsquo;s configuration files on its project page). Start by renaming <em>application.properties</em> to <em>application.yml</em>. Spring Boot will automatically recognize this as a valid configuration file. Open the file and add the following content.</p>
+
+<pre><code class="language-yaml">spring:
+  cache:
+    cache-names: timeCached
+    caffeine:
+      spec: expireAfterAccess=30s
+</code></pre>
+
+<p>This bit of configuration instructs Spring Boot to configure Caffeine with a cache named <em>timeCached</em> that expires after 30 seconds of inactivity.</p>
+
+<h3 id="run-it">Run it</h3>
+
+<p>Restart the application (if it is still running) and navigate to <a href="http://localhost:8080/">localhost:8080</a>.  You&rsquo;ll see the same output as the last time we checked in on our application. Refresh the page a few times to verify that we are still caching the time. Now, wait 30 or more seconds and try refreshing the page. You should see that the cached time has been updated. Refresh a few more times to verify that the new time has been cached.</p>
+
+<h3 id="use-a-better-eviction-policy">Use a better eviction policy</h3>
+
+<p>Great, we have a cache that expires after 30 seconds. Or does it? Re-read that last paragraph. You will note that I mentioned the cache will expire after 30 seconds of inactivity. This means that if the cache is written to or read from at any point during those 30 seconds the eviction timer will reset. This will quickly turn into a cache that appears to never expire in applications that access the cache more frequently that the eviction policy dictates. This could be bad. What we really want, is a cache that expires 30 seconds after it has been written. Lets make a small tweak to the <em>application.yml</em> file.</p>
+
+<pre><code class="language-yaml">spring:
+  cache:
+    cache-names: timeCached
+    caffeine:
+      spec: expireAfterWrite=30s
+</code></pre>
+
+<p>With this change the cache data will be evicted 30 seconds after it has been written. You can read more about <a href="https://github.com/ben-manes/caffeine/wiki/Eviction">eviction policies</a> on the Caffeine wiki.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Congratulations, you made it! You have a simple application that caches some data with a time based eviction policy. Spring Boot supports a number of different caching providers including, EHCache, Redis, and Hazlecast. Most of these can be configured in a similar way but all of them will leverage the same implementation in your code. The <code>@Cacheable</code> and <code>@EnableCaching</code> annotations abstract away the implementation details so that you can focus on your application and the minimal configuration. Also, if you got stuck anywhere, feel free to refer back to the <a href="https://github.com/stevegood/caffeine-cache-spring-boot-demo">finished sample application on GitHub</a>.</p>
+
+<p>Good luck and happy caching!</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="http://www.stevegood.rocks/" style="background-image: url(http://www.stevegood.rocks/images/steve-avatar-dark.png)"><span class="hidden">Steve Good's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://www.stevegood.rocks/">Steve Good</a></h4>
+  
+  <p>Professional software engineer, amatuer photographer, and part-time mountain biker.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">San Diego, CA</span>
+    <span class="author-link icon-link"><a href="http://stevegood.rocks">http://stevegood.rocks</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Implementing%20Caffeine%20Cache%20with%20Spring%20Boot&nbsp;-&nbsp;Steve%20Good&amp;url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2016%2f11%2f15%2fimplementing-caffeine-cache-with-spring-boot%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2016%2f11%2f15%2fimplementing-caffeine-cache-with-spring-boot%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2016%2f11%2f15%2fimplementing-caffeine-cache-with-spring-boot%2f&amp;description=Implementing%20Caffeine%20Cache%20with%20Spring%20Boot"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fwww.stevegood.rocks%2fpost%2f2016%2f11%2f15%2fimplementing-caffeine-cache-with-spring-boot%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'stevegood';
+  var disqus_url = 'http:\/\/www.stevegood.rocks\/post\/2016\/11\/15\/implementing-caffeine-cache-with-spring-boot\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Steve Good</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/jquery.js"></script>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://www.stevegood.rocks/js/index.js"></script>
+    
+</body>
+</html>
+

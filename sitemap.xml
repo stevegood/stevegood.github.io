@@ -3,7 +3,12 @@
   
   <url>
     <loc>http://www.stevegood.rocks/</loc>
-    <lastmod>2016-10-11T14:11:01-07:00</lastmod>
+    <lastmod>2016-11-15T14:55:39-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</loc>
+    <lastmod>2016-11-15T14:55:39-08:00</lastmod>
   </url>
   
   <url>
