@@ -63,13 +63,13 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
 class TimeController {
-    
+
     @RequestMapping
     def index(Model model) {
         model.addAllAttributes now: (new Date().time)
         &#39;index&#39;
     }
-    
+
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -177,7 +177,7 @@ class TimeService {
     long getTimeNow() {
         new Date().time
     }
-    
+
     @Cacheable(&#39;timeCached&#39;)
     long getTimeCached() {
         timeNow
@@ -212,7 +212,7 @@ class TimeService {
 
 &lt;p&gt;In your &lt;code&gt;build.gradle&lt;/code&gt; file, add the following line to the &lt;em&gt;dependencies&lt;/em&gt; block.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;compile &#39;com.github.ben-manes.caffeine:caffeine:2.3.5&#39;
+&lt;pre&gt;&lt;code class=&#34;language-groovy&#34;&gt;compile &#39;com.github.ben-manes.caffeine:caffeine&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Maven users can add the following to their &lt;code&gt;pom.xml&lt;/code&gt;.&lt;/p&gt;
@@ -220,7 +220,6 @@ class TimeService {
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
     &amp;lt;groupId&amp;gt;com.github.ben-manes.caffeine&amp;lt;/groupId&amp;gt;
     &amp;lt;artifactId&amp;gt;caffeine&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;2.3.5&amp;lt;/version&amp;gt;
 &amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
