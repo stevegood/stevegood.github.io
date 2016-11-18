@@ -30,11 +30,12 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="http://www.stevegood.rocks/images/favicon.ico">
-	  <link rel="apple-touch-icon" href="http://www.stevegood.rocks/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="http://www.stevegood.rocks/images/steve-avatar-dark.png">
+	  <link rel="apple-touch-icon" href="http://www.stevegood.rocks/images/steve-avatar-dark.png" />
 
     <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/css/screen.css" />
     <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.stevegood.rocks/stylesheets/prism.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
@@ -141,22 +142,22 @@
 <ol>
 <li><p>Install build-essentials and gcc</p>
 
-<pre><code>sudo apt-get install build-essential gcc
+<pre><code class="language-bash">sudo apt-get install build-essential gcc
 </code></pre></li>
 
 <li><p>Download Python 2.5.5 (This seems to be the officially supported version)</p>
 
-<pre><code>wget http://www.python.org/ftp/python/2.5.5/Python-2.5.5.tgz
+<pre><code class="language-bash">wget http://www.python.org/ftp/python/2.5.5/Python-2.5.5.tgz
 </code></pre></li>
 
 <li><p>Extract</p>
 
-<pre><code>tar -xvzf Python-2.5.5.tgz
+<pre><code class="language-bash">tar -xvzf Python-2.5.5.tgz
 </code></pre></li>
 
 <li><p>Compile and install</p>
 
-<pre><code>cd Python-2.5.5
+<pre><code class="language-bash">cd Python-2.5.5
 ./configure --prefix=/usr/local/python2.5
 make
 sudo make install
@@ -169,62 +170,62 @@ sudo ln -s /usr/local/python2.5/bin/python /usr/bin/python2.5
 <ol>
 <li><p>Switch to root user</p>
 
-<pre><code>sudo -s
+<pre><code class="language-bash">sudo -s
 </code></pre></li>
 
 <li><p>Create dropbox user and group and set the user&rsquo;s home to be** <code>/etc/dropbox</code></p>
 
-<pre><code>groupadd dropbox
+<pre><code class="language-bash">groupadd dropbox
 useradd -r -d /etc/dropbox -g dropbox -s /bin/false dropbox
 </code></pre></li>
 
 <li><p>Download the 64-bit Dropbox binary</p>
 
-<pre><code>wget -O /tmp/dropbox.tar.gz http://www.dropbox.com/download/?plat=lnx.x86_64
+<pre><code class="language-bash">wget -O /tmp/dropbox.tar.gz http://www.dropbox.com/download/?plat=lnx.x86_64
 </code></pre></li>
 
 <li><p>Create the dropbox user&rsquo;s home and set the ownership and permissions</p>
 
-<pre><code>mkdir -p /usr/local/dropbox /etc/dropbox
+<pre><code class="language-bash">mkdir -p /usr/local/dropbox /etc/dropbox
 chown dropbox.dropbox /etc/dropbox
 chmod 700 /etc/dropbox
 </code></pre></li>
 
 <li><p>Extract the dropbox binaries</p>
 
-<pre><code>tar xvzf /tmp/dropbox.tar.gz -C /usr/local/dropbox --strip 1
+<pre><code class="language-bash">tar xvzf /tmp/dropbox.tar.gz -C /usr/local/dropbox --strip 1
 </code></pre></li>
 
 <li><p>Remove the dropbox archive</p>
 
-<pre><code>rm /tmp/dropbox.tar.gz
+<pre><code class="language-bash">rm /tmp/dropbox.tar.gz
 </code></pre></li>
 
 <li><p>Switch to the dropbox user</p>
 
-<pre><code>su -l dropbox -s /bin/bash
+<pre><code class="language-bash">su -l dropbox -s /bin/bash
 </code></pre></li>
 
 <li><p>Set the user&rsquo;s permissions</p>
 
-<pre><code>umask 0027
+<pre><code class="language-bash">umask 0027
 </code></pre></li>
 
 <li><p>Execute the dropbox daemon <em>(Note: A URL will be repeated in the terminal window if the install machine is not registered to an account. Navigate to the URL (while logged in under the account you wish to link) and wait for the prompt to notify you that you are now linked. You&rsquo;ll get a simple welcome message.)</em></p>
 
-<pre><code>/usr/local/dropbox/dropboxd
+<pre><code class="language-bash">    /usr/local/dropbox/dropboxd
 </code></pre></li>
 
 <li><p>Terminate the dropbox daemon with <code>ctrl+c</code></p></li>
 
 <li><p>Log out of the dropbox user</p>
 
-<pre><code>exit
+<pre><code class="language-bash">exit
 </code></pre></li>
 
 <li><p>Create the control script</p>
 
-<pre><code>cat &gt;&gt; EOF | sed -e &quot;s,%,$,g&quot; &amp;gt;/etc/init.d/dropbox
+<pre><code class="language-bash">cat &gt;&gt; EOF | sed -e &quot;s,%,$,g&quot; &gt;/etc/init.d/dropbox
 ### BEGIN INIT INFO
 # Provides:          dropbox
 # Required-Start:    $local_fs
@@ -307,17 +308,17 @@ EOF
 
 <li><p>Allow the control script to me executed and set it to autostart</p>
 
-<pre><code>chmod a+x /etc/init.d/dropbox
+<pre><code class="language-bash">chmod a+x /etc/init.d/dropbox
 update-rc.d dropbox defaults
 </code></pre></li>
 
 <li><p>Start dropbox</p>
 
-<pre><code>/etc/init.d/dropbox start
+<pre><code class="language-bash">/etc/init.d/dropbox start
 </code></pre></li>
 </ol>
 
-<p>You should now have Dropbox running as a service on your server. All that&rsquo;s left is to create your cron jobs that run your backup scripts and have those backup files placed into the /etc/dropbox/Dropbox folder.</p>
+<p>You should now have Dropbox running as a service on your server. All that&rsquo;s left is to create your cron jobs that run your backup scripts and have those backup files placed into the <em>/etc/dropbox/Dropbox</em> folder.</p>
 
     </section>
 
@@ -404,6 +405,7 @@ update-rc.d dropbox defaults
     <script type="text/javascript" src="http://www.stevegood.rocks/js/jquery.js"></script>
     <script type="text/javascript" src="http://www.stevegood.rocks/js/jquery.fitvids.js"></script>
     <script type="text/javascript" src="http://www.stevegood.rocks/js/index.js"></script>
+    <script type="text/javascript" src="http://www.stevegood.rocks/javascripts/prism.js"></script>
     
 </body>
 </html>

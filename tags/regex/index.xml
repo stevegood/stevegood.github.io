@@ -18,21 +18,21 @@
 
 &lt;p&gt;The method is pretty simple.  It loops over the supplied list, applies some regex to locate the first email address within the string, appends it to a new list that is returned.  See below.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-coldfusion&#34;&gt;&amp;lt;cffunction name=&amp;quot;sanitizeEmailList&amp;quot; access=&amp;quot;public&amp;quot; returnType=&amp;quot;String&amp;quot; output=&amp;quot;false&amp;quot;&amp;gt;
-    &amp;lt;cfargument name=&amp;quot;emailList&amp;quot; type=&amp;quot;String&amp;quot; required=&amp;quot;true&amp;quot; /&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;cffunction name=&amp;quot;sanitizeEmailList&amp;quot; access=&amp;quot;public&amp;quot; returnType=&amp;quot;String&amp;quot; output=&amp;quot;false&amp;quot;&amp;gt;
+  &amp;lt;cfargument name=&amp;quot;emailList&amp;quot; type=&amp;quot;String&amp;quot; required=&amp;quot;true&amp;quot; /&amp;gt;
 
-		&amp;lt;cfset var local = {} /&amp;gt;
-    &amp;lt;cfset local.email = &#39;&#39; /&amp;gt;
-    &amp;lt;cfset local.RegEx = &amp;quot;[a-z0-9!##$%&amp;amp;&#39;*+/=?^_`{|}~-]+(?:\.[a-z0-9!##$%&amp;amp;&#39;*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?&amp;quot;/&amp;gt;
+	&amp;lt;cfset var local = {} /&amp;gt;
+  &amp;lt;cfset local.email = &#39;&#39; /&amp;gt;
+  &amp;lt;cfset local.RegEx = &amp;quot;[a-z0-9!##$%&amp;amp;&#39;*+/=?^_`{|}~-]+(?:\.[a-z0-9!##$%&amp;amp;&#39;*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?&amp;quot;/&amp;gt;
 
-		&amp;lt;cfloop list=&amp;quot;#arguments.emailList#&amp;quot; index=&amp;quot;local.i&amp;quot;&amp;gt;
-        &amp;lt;cfset local.address = ReMatch(local.RegEx,local.i)/&amp;gt;
-        &amp;lt;cfif ArrayLen(local.address)&amp;gt;
-            &amp;lt;cfset local.email = ListAppend(local.email,local.address[1]) /&amp;gt;
-        &amp;lt;/cfif&amp;gt;
-    &amp;lt;/cfloop&amp;gt;
+  &amp;lt;cfloop list=&amp;quot;#arguments.emailList#&amp;quot; index=&amp;quot;local.i&amp;quot;&amp;gt;
+    &amp;lt;cfset local.address = ReMatch(local.RegEx,local.i)/&amp;gt;
+    &amp;lt;cfif ArrayLen(local.address)&amp;gt;
+      &amp;lt;cfset local.email = ListAppend(local.email,local.address[1]) /&amp;gt;
+    &amp;lt;/cfif&amp;gt;
+  &amp;lt;/cfloop&amp;gt;
 
-		&amp;lt;cfreturn local.email /&amp;gt;
+  &amp;lt;cfreturn local.email /&amp;gt;
 &amp;lt;/cffunction&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 

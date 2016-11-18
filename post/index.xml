@@ -403,7 +403,7 @@ class TimeService {
 
 &lt;h2 id=&#34;moar-posts&#34;&gt;Moar Posts?&lt;/h2&gt;
 
-&lt;p&gt;No, probably not yet.  I have a whole lot going on in my life right now that is taking up the vast majority of my time.  However, I will certainly feel better about not blogging as often since it won&amp;rsquo;t be costing my anything ( &lt;em&gt;have I harped of the cost enough yet?&lt;/em&gt; ).&lt;/p&gt;
+&lt;p&gt;No, probably not yet.  I have a whole lot going on in my life right now that is taking up the vast majority of my time.  However, I will certainly feel better about not blogging as often since it won&amp;rsquo;t be costing my anything (&lt;em&gt;have I harped on the cost enough yet?&lt;/em&gt;).&lt;/p&gt;
 
 &lt;p&gt;More to come later (and I hope to figure out how to get comments added).&lt;/p&gt;
 </description>
@@ -517,7 +517,7 @@ class TimeService {
 
 &lt;p&gt;Building the script was a snap.  One of the cool things about shell scripting is that you are able to specify the binary that you want to use to execute your script. So by adding a single line of declaration I was able to create a script that can run as if it was a native executable.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/env groovy
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/usr/bin/env groovy
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After that it&amp;rsquo;s just a matter of writing the code that does the work!  Lets start with the dependent libraries.&lt;/p&gt;

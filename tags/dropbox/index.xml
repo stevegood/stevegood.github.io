@@ -27,22 +27,22 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Install build-essentials and gcc&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo apt-get install build-essential gcc
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install build-essential gcc
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Download Python 2.5.5 (This seems to be the officially supported version)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;wget http://www.python.org/ftp/python/2.5.5/Python-2.5.5.tgz
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget http://www.python.org/ftp/python/2.5.5/Python-2.5.5.tgz
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Extract&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;tar -xvzf Python-2.5.5.tgz
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xvzf Python-2.5.5.tgz
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Compile and install&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cd Python-2.5.5
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd Python-2.5.5
 ./configure --prefix=/usr/local/python2.5
 make
 sudo make install
@@ -55,62 +55,62 @@ sudo ln -s /usr/local/python2.5/bin/python /usr/bin/python2.5
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Switch to root user&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sudo -s
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo -s
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Create dropbox user and group and set the user&amp;rsquo;s home to be** &lt;code&gt;/etc/dropbox&lt;/code&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;groupadd dropbox
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;groupadd dropbox
 useradd -r -d /etc/dropbox -g dropbox -s /bin/false dropbox
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Download the 64-bit Dropbox binary&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;wget -O /tmp/dropbox.tar.gz http://www.dropbox.com/download/?plat=lnx.x86_64
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget -O /tmp/dropbox.tar.gz http://www.dropbox.com/download/?plat=lnx.x86_64
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Create the dropbox user&amp;rsquo;s home and set the ownership and permissions&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;mkdir -p /usr/local/dropbox /etc/dropbox
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir -p /usr/local/dropbox /etc/dropbox
 chown dropbox.dropbox /etc/dropbox
 chmod 700 /etc/dropbox
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Extract the dropbox binaries&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;tar xvzf /tmp/dropbox.tar.gz -C /usr/local/dropbox --strip 1
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar xvzf /tmp/dropbox.tar.gz -C /usr/local/dropbox --strip 1
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Remove the dropbox archive&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;rm /tmp/dropbox.tar.gz
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rm /tmp/dropbox.tar.gz
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Switch to the dropbox user&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;su -l dropbox -s /bin/bash
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;su -l dropbox -s /bin/bash
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Set the user&amp;rsquo;s permissions&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;umask 0027
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;umask 0027
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Execute the dropbox daemon &lt;em&gt;(Note: A URL will be repeated in the terminal window if the install machine is not registered to an account. Navigate to the URL (while logged in under the account you wish to link) and wait for the prompt to notify you that you are now linked. You&amp;rsquo;ll get a simple welcome message.)&lt;/em&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/usr/local/dropbox/dropboxd
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    /usr/local/dropbox/dropboxd
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Terminate the dropbox daemon with &lt;code&gt;ctrl+c&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Log out of the dropbox user&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;exit
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;exit
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Create the control script&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;cat &amp;gt;&amp;gt; EOF | sed -e &amp;quot;s,%,$,g&amp;quot; &amp;amp;gt;/etc/init.d/dropbox
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt;&amp;gt; EOF | sed -e &amp;quot;s,%,$,g&amp;quot; &amp;gt;/etc/init.d/dropbox
 ### BEGIN INIT INFO
 # Provides:          dropbox
 # Required-Start:    $local_fs
@@ -193,17 +193,17 @@ EOF
 
 &lt;li&gt;&lt;p&gt;Allow the control script to me executed and set it to autostart&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;chmod a+x /etc/init.d/dropbox
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod a+x /etc/init.d/dropbox
 update-rc.d dropbox defaults
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Start dropbox&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/etc/init.d/dropbox start
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/etc/init.d/dropbox start
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;You should now have Dropbox running as a service on your server. All that&amp;rsquo;s left is to create your cron jobs that run your backup scripts and have those backup files placed into the /etc/dropbox/Dropbox folder.&lt;/p&gt;
+&lt;p&gt;You should now have Dropbox running as a service on your server. All that&amp;rsquo;s left is to create your cron jobs that run your backup scripts and have those backup files placed into the &lt;em&gt;/etc/dropbox/Dropbox&lt;/em&gt; folder.&lt;/p&gt;
 </description>
     </item>
     
