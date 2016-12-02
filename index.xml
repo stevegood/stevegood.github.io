@@ -265,19 +265,12 @@ class TimeService {
     </item>
     
     <item>
-      <title>About Steve</title>
+      <title>About Me</title>
       <link>http://www.stevegood.rocks/about/</link>
       <pubDate>Tue, 11 Oct 2016 14:11:01 -0700</pubDate>
       
       <guid>http://www.stevegood.rocks/about/</guid>
-      <description>&lt;p&gt;Connect with me on social media.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/stevegood&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/stevegood&#34;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitch.tv/extrememoderation&#34;&gt;Twitch.tv&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
