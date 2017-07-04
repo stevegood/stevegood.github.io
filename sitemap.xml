@@ -1,371 +1,373 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</loc>
+    <loc>https://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</loc>
     <lastmod>2016-11-15T14:55:39-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/about/</loc>
+    <loc>https://www.stevegood.rocks/about/</loc>
     <lastmod>2016-10-11T14:11:01-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</loc>
+    <loc>https://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</loc>
     <lastmod>2016-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</loc>
+    <loc>https://www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</loc>
     <lastmod>2016-08-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2015/09/11/so-you-want-to-learn-to-program/</loc>
+    <loc>https://www.stevegood.rocks/post/2015/09/11/so-you-want-to-learn-to-program/</loc>
     <lastmod>2015-09-11T20:33:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2013/06/04/moving-forward-and-a-tiny-planet/</loc>
+    <loc>https://www.stevegood.rocks/post/2013/06/04/moving-forward-and-a-tiny-planet/</loc>
     <lastmod>2013-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</loc>
     <lastmod>2012-08-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</loc>
     <lastmod>2012-07-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/07/05/the-way-out/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/07/05/the-way-out/</loc>
     <lastmod>2012-07-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/26/the-hallway/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/26/the-hallway/</loc>
     <lastmod>2012-06-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/20/stone-steel-and-glass/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/20/stone-steel-and-glass/</loc>
     <lastmod>2012-06-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/19/the-trumptes-sound/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/19/the-trumptes-sound/</loc>
     <lastmod>2012-06-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</loc>
     <lastmod>2012-06-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/17/sundance-court/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/17/sundance-court/</loc>
     <lastmod>2012-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/16/the-milk-silo/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/16/the-milk-silo/</loc>
     <lastmod>2012-06-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/15/some-kind-of-date-and-explore-fort-worth/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/15/some-kind-of-date-and-explore-fort-worth/</loc>
     <lastmod>2012-06-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/14/secrets/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/14/secrets/</loc>
     <lastmod>2012-06-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/13/grails-smugmug-and-my-latest-photo/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/13/grails-smugmug-and-my-latest-photo/</loc>
     <lastmod>2012-06-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/06/12/grails-console-tip-running-bootstrap-and-using-services/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/06/12/grails-console-tip-running-bootstrap-and-using-services/</loc>
     <lastmod>2012-06-12T17:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/05/24/grails-and-bootstrap-and-jelastic-oh-my/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/05/24/grails-and-bootstrap-and-jelastic-oh-my/</loc>
     <lastmod>2012-05-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</loc>
+    <loc>https://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</loc>
     <lastmod>2012-02-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</loc>
+    <loc>https://www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</loc>
     <lastmod>2011-11-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</loc>
+    <loc>https://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</loc>
     <lastmod>2011-10-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</loc>
+    <loc>https://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</loc>
     <lastmod>2009-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/2009/09/30/replace-linked-mp3-files-with-an-audio-player-using-jquery/</loc>
+    <loc>https://www.stevegood.rocks/post/2009/09/30/replace-linked-mp3-files-with-an-audio-player-using-jquery/</loc>
     <lastmod>2009-09-30T17:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/atlassian/</loc>
+    <loc>https://www.stevegood.rocks/tags/atlassian/</loc>
     <lastmod>2016-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/bass-performance-hall/</loc>
+    <loc>https://www.stevegood.rocks/tags/bass-performance-hall/</loc>
     <lastmod>2012-06-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/blog/</loc>
+    <loc>https://www.stevegood.rocks/tags/blog/</loc>
     <lastmod>2016-08-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/cache/</loc>
+    <loc>https://www.stevegood.rocks/tags/cache/</loc>
     <lastmod>2016-11-15T14:55:39-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/caffeine/</loc>
+    <loc>https://www.stevegood.rocks/tags/caffeine/</loc>
     <lastmod>2016-11-15T14:55:39-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/categories/</loc>
+    <loc>https://www.stevegood.rocks/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/coldfusion/</loc>
+    <loc>https://www.stevegood.rocks/tags/coldfusion/</loc>
     <lastmod>2009-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/confluence/</loc>
+    <loc>https://www.stevegood.rocks/tags/confluence/</loc>
     <lastmod>2016-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/dropbox/</loc>
+    <loc>https://www.stevegood.rocks/tags/dropbox/</loc>
     <lastmod>2011-10-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/fort-worth/</loc>
+    <loc>https://www.stevegood.rocks/tags/fort-worth/</loc>
     <lastmod>2012-06-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/github/</loc>
+    <loc>https://www.stevegood.rocks/tags/github/</loc>
     <lastmod>2016-08-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/gmavenplus/</loc>
+    <loc>https://www.stevegood.rocks/tags/gmavenplus/</loc>
     <lastmod>2016-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/gource/</loc>
+    <loc>https://www.stevegood.rocks/tags/gource/</loc>
     <lastmod>2012-06-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/grails/</loc>
+    <loc>https://www.stevegood.rocks/tags/grails/</loc>
     <lastmod>2012-07-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/groovy/</loc>
+    <loc>https://www.stevegood.rocks/tags/groovy/</loc>
     <lastmod>2016-11-15T14:55:39-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/hdr/</loc>
+    <loc>https://www.stevegood.rocks/tags/hdr/</loc>
     <lastmod>2012-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/hospital/</loc>
+    <loc>https://www.stevegood.rocks/tags/hospital/</loc>
     <lastmod>2012-06-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/image/</loc>
+    <loc>https://www.stevegood.rocks/tags/image/</loc>
     <lastmod>2012-02-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/ios/</loc>
+    <loc>https://www.stevegood.rocks/tags/ios/</loc>
     <lastmod>2012-02-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/irl/</loc>
+    <loc>https://www.stevegood.rocks/tags/irl/</loc>
     <lastmod>2012-06-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/java/</loc>
+    <loc>https://www.stevegood.rocks/tags/java/</loc>
     <lastmod>2016-11-15T14:55:39-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/jira/</loc>
+    <loc>https://www.stevegood.rocks/tags/jira/</loc>
     <lastmod>2016-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/kainexus/</loc>
+    <loc>https://www.stevegood.rocks/tags/kainexus/</loc>
     <lastmod>2012-07-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/macos/</loc>
+    <loc>https://www.stevegood.rocks/tags/macos/</loc>
     <lastmod>2011-11-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/open-source/</loc>
+    <loc>https://www.stevegood.rocks/tags/open-source/</loc>
     <lastmod>2012-06-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/os-x/</loc>
+    <loc>https://www.stevegood.rocks/tags/os-x/</loc>
     <lastmod>2011-11-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/photography/</loc>
+    <loc>https://www.stevegood.rocks/tags/photography/</loc>
     <lastmod>2012-07-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/plugins/</loc>
+    <loc>https://www.stevegood.rocks/tags/plugins/</loc>
     <lastmod>2016-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/post/</loc>
-    <lastmod>2016-11-15T14:55:39-08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.stevegood.rocks/categories/post/</loc>
+    <loc>https://www.stevegood.rocks/categories/post/</loc>
     <lastmod>2012-06-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/post/</loc>
+    <loc>https://www.stevegood.rocks/tags/post/</loc>
     <lastmod>2016-11-15T14:55:39-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/programming/</loc>
+    <loc>https://www.stevegood.rocks/post/</loc>
+    <lastmod>2016-11-15T14:55:39-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.stevegood.rocks/tags/programming/</loc>
     <lastmod>2012-08-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/python/</loc>
+    <loc>https://www.stevegood.rocks/tags/python/</loc>
     <lastmod>2011-10-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/regex/</loc>
+    <loc>https://www.stevegood.rocks/tags/regex/</loc>
     <lastmod>2009-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/sdk/</loc>
+    <loc>https://www.stevegood.rocks/tags/sdk/</loc>
     <lastmod>2016-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/spring-boot/</loc>
+    <loc>https://www.stevegood.rocks/tags/spring-boot/</loc>
     <lastmod>2016-11-15T14:55:39-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/</loc>
+    <loc>https://www.stevegood.rocks/</loc>
     <lastmod>2016-11-15T14:55:39-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/</loc>
+    <loc>https://www.stevegood.rocks/tags/</loc>
+    <lastmod>2016-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/texas/</loc>
+    <loc>https://www.stevegood.rocks/tags/texas/</loc>
     <lastmod>2012-06-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/video/</loc>
+    <loc>https://www.stevegood.rocks/tags/video/</loc>
     <lastmod>2012-06-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.stevegood.rocks/tags/visualization/</loc>
+    <loc>https://www.stevegood.rocks/tags/visualization/</loc>
     <lastmod>2012-06-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

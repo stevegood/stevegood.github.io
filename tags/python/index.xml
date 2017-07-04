@@ -2,209 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Steve Good</title>
-    <link>http://www.stevegood.rocks/tags/python/index.xml</link>
+    <link>https://www.stevegood.rocks/tags/python/</link>
     <description>Recent content in Python on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://www.stevegood.rocks/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Oct 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.stevegood.rocks/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Using Dropbox as a Distributed Backup</title>
-      <link>http://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</link>
+      <link>https://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</link>
       <pubDate>Sat, 22 Oct 2011 00:00:00 +0000</pubDate>
       
-      <guid>http://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</guid>
-      <description>
-
-&lt;p&gt;A while back I made some improvements to the backup scheme we use at &lt;a href=&#34;http://kainexus.com/&#34;&gt;KaiNexus&lt;/a&gt;. The requirements were pretty simple and straight forward. All our backups had to be encrypted, offsite and distributed. While there are a number of for-pay backup solutions out there we were looking for the bare minimum and free solution.&lt;/p&gt;
-
-&lt;p&gt;At the office, we all use &lt;a href=&#34;http://db.tt/JbuaZVj&#34;&gt;Dropbox&lt;/a&gt; for file sharing so it seemed like a logical tool to use since we were all familiar with it. Dropbox lets us check off two requirements by being both off site and distributed. Here&amp;rsquo;s my step-by-step guide on getting Dropbox setup on an Ubuntu server with minimal effort. I&amp;rsquo;m not covering the file encryption bit in this post but if you want to know how I did it let me know and I&amp;rsquo;ll do a writup on it.&lt;/p&gt;
-
-&lt;p&gt;The steps outlined here were put together after reading through a couple of &lt;a href=&#34;http://welcometoubuntu.blogspot.com/2010/05/howto-install-python-255-on-ubuntu-1004.html&#34;&gt;other&lt;/a&gt; &lt;a href=&#34;http://wiki.dropbox.com/TipsAndTricks/UbuntuServerInstall&#34;&gt;guides&lt;/a&gt;. Feel free to read those guides if you want but you should be able to get everything you need from what I have below.&lt;/p&gt;
-
-&lt;h2 id=&#34;install-python&#34;&gt;Install Python&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Install build-essentials and gcc&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install build-essential gcc
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Download Python 2.5.5 (This seems to be the officially supported version)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget http://www.python.org/ftp/python/2.5.5/Python-2.5.5.tgz
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Extract&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar -xvzf Python-2.5.5.tgz
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Compile and install&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd Python-2.5.5
-./configure --prefix=/usr/local/python2.5
-make
-sudo make install
-sudo ln -s /usr/local/python2.5/bin/python /usr/bin/python2.5
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;install-dropbox&#34;&gt;Install Dropbox&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Switch to root user&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo -s
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Create dropbox user and group and set the user&amp;rsquo;s home to be** &lt;code&gt;/etc/dropbox&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;groupadd dropbox
-useradd -r -d /etc/dropbox -g dropbox -s /bin/false dropbox
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Download the 64-bit Dropbox binary&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget -O /tmp/dropbox.tar.gz http://www.dropbox.com/download/?plat=lnx.x86_64
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Create the dropbox user&amp;rsquo;s home and set the ownership and permissions&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir -p /usr/local/dropbox /etc/dropbox
-chown dropbox.dropbox /etc/dropbox
-chmod 700 /etc/dropbox
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Extract the dropbox binaries&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tar xvzf /tmp/dropbox.tar.gz -C /usr/local/dropbox --strip 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Remove the dropbox archive&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rm /tmp/dropbox.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Switch to the dropbox user&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;su -l dropbox -s /bin/bash
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Set the user&amp;rsquo;s permissions&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;umask 0027
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Execute the dropbox daemon &lt;em&gt;(Note: A URL will be repeated in the terminal window if the install machine is not registered to an account. Navigate to the URL (while logged in under the account you wish to link) and wait for the prompt to notify you that you are now linked. You&amp;rsquo;ll get a simple welcome message.)&lt;/em&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;    /usr/local/dropbox/dropboxd
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Terminate the dropbox daemon with &lt;code&gt;ctrl+c&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Log out of the dropbox user&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;exit
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Create the control script&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat &amp;gt;&amp;gt; EOF | sed -e &amp;quot;s,%,$,g&amp;quot; &amp;gt;/etc/init.d/dropbox
-### BEGIN INIT INFO
-# Provides:          dropbox
-# Required-Start:    $local_fs
-# Required-Stop:     $local_fs
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: starts the dropbox service
-# Description:       starts dropbox using start-stop-daemon
-### END INIT INFO
-
-DROPBOX_USERS=&amp;quot;dropbox&amp;quot;
-DAEMON=/usr/local/dropbox/dropbox
-unset DISPLAY
-
-start() {
-    echo &amp;quot;Starting dropbox...&amp;quot;
-    for dbuser in %DROPBOX_USERS; do
-        HOMEDIR=%(getent passwd %dbuser | cut -d: -f6)
-        if [ -x %DAEMON ]; then
-            HOME=&amp;quot;%HOMEDIR&amp;quot; start-stop-daemon -b -o -c %dbuser -S -u %dbuser -x %DAEMON
-        fi
-    done
-}
-
-stop() {
-    echo &amp;quot;Stopping dropbox...&amp;quot;
-    for dbuser in %DROPBOX_USERS; do
-        HOMEDIR=%(getent passwd %dbuser | cut -d: -f6)
-        if [ -x %DAEMON ]; then
-            start-stop-daemon -o -c %dbuser -K -u %dbuser -x %DAEMON
-        fi
-    done
-}
-
-status() {
-    for dbuser in %DROPBOX_USERS; do
-        dbpid=%(pgrep -u %dbuser dropbox)
-        if [ -z %dbpid ] ; then
-            echo &amp;quot;dropboxd for USER %dbuser: not running.&amp;quot;
-        else
-            echo &amp;quot;dropboxd for USER %dbuser: running (pid %dbpid)&amp;quot;
-        fi
-    done
-}
-
-
-case &amp;quot;%1&amp;quot; in
-  start)
-    start
-    sleep 1
-    status
-    ;;
-
-  stop)
-    stop
-    sleep 1
-    status
-    ;;
-
-  restart|reload|force-reload)
-    stop
-    start
-    sleep 1
-    status
-    ;;
-
-  status)
-    status
-    ;;
-
-  *)
-    echo &amp;quot;Usage: /etc/init.d/dropbox {start|stop|reload|force-reload|restart|status}&amp;quot;
-    exit 1
-
-esac
-
-exit 0
-EOF
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Allow the control script to me executed and set it to autostart&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod a+x /etc/init.d/dropbox
-update-rc.d dropbox defaults
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Start dropbox&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/etc/init.d/dropbox start
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;You should now have Dropbox running as a service on your server. All that&amp;rsquo;s left is to create your cron jobs that run your backup scripts and have those backup files placed into the &lt;em&gt;/etc/dropbox/Dropbox&lt;/em&gt; folder.&lt;/p&gt;
-</description>
+      <guid>https://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</guid>
+      <description>A while back I made some improvements to the backup scheme we use at KaiNexus. The requirements were pretty simple and straight forward. All our backups had to be encrypted, offsite and distributed. While there are a number of for-pay backup solutions out there we were looking for the bare minimum and free solution.
+At the office, we all use Dropbox for file sharing so it seemed like a logical tool to use since we were all familiar with it.</description>
     </item>
     
   </channel>

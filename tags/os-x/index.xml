@@ -2,22 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Os X on Steve Good</title>
-    <link>http://www.stevegood.rocks/tags/os-x/index.xml</link>
+    <link>https://www.stevegood.rocks/tags/os-x/</link>
     <description>Recent content in Os X on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://www.stevegood.rocks/tags/os-x/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Nov 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.stevegood.rocks/tags/os-x/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Lion&#39;s Autosave and Versions support is Easy to Add</title>
-      <link>http://www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</link>
+      <link>https://www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</link>
       <pubDate>Sun, 13 Nov 2011 00:00:00 +0000</pubDate>
       
-      <guid>http://www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</guid>
-      <description>&lt;p&gt;I am currently working through an older Cocoa book and learning how to develop apps for the Mac.  While building the sample that demonstrates saving and opening files I noticed that my little application was already taking advantage of Lion&amp;rsquo;s new autosave and versions support.  I recorded a quick video showing how easy it was to add this support.&lt;/p&gt;
-
-&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;//www.youtube.com/embed/6ooPhyBmjlE&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-</description>
+      <guid>https://www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</guid>
+      <description>I am currently working through an older Cocoa book and learning how to develop apps for the Mac. While building the sample that demonstrates saving and opening files I noticed that my little application was already taking advantage of Lion&amp;rsquo;s new autosave and versions support. I recorded a quick video showing how easy it was to add this support.
+ </description>
     </item>
     
   </channel>
