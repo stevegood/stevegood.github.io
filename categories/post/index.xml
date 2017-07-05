@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Post on Steve Good</title>
-    <link>https://www.stevegood.rocks/categories/post/</link>
+    <link>//www.stevegood.rocks/categories/post/</link>
     <description>Recent content in Post on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 18 Jun 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/categories/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/categories/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>What Big Teeth you Have</title>
-      <link>https://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</link>
+      <link>//www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</link>
       <pubDate>Mon, 18 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</guid>
       <description>I have been experimenting with a number of different photography techniques, one of those is the invisible black backdrop. Using this technique, I decided to follow my chihuahua around and generally annoy him with my flash. The result was a yawn captured at just the right moment. Isn&amp;rsquo;t he just so vicious?
 
 The SteveGood.org Repository Visualized A while back I found a really interesting utility for visualizing the activity of a Git repository.</description>

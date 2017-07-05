@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ios on Steve Good</title>
-    <link>https://www.stevegood.rocks/tags/ios/</link>
+    <link>//www.stevegood.rocks/tags/ios/</link>
     <description>Recent content in Ios on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Feb 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Uploading an image from iOS 5</title>
-      <link>https://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</link>
+      <link>//www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</link>
       <pubDate>Thu, 23 Feb 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</guid>
+      <guid>//www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</guid>
       <description>Lately I&amp;rsquo;ve been working steadily towards getting an iOS app released for my company, KaiNexus. The first pass at this app will have the basic ability to submit an idea from your phone and be able to attach a picture. Since I am still a novice with Objective-C it was no surprise when I ran into a brick wall when trying to upload the image from the app. This prompted me to ask on stackoverflow to see what I had done wrong.</description>
     </item>
     

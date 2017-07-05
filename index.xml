@@ -2,77 +2,77 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Steve Good</title>
-    <link>https://www.stevegood.rocks/</link>
+    <link>//www.stevegood.rocks/</link>
     <description>Recent content on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Nov 2016 14:55:39 -0800</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Implementing Caffeine Cache with Spring Boot</title>
-      <link>https://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</link>
+      <link>//www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</link>
       <pubDate>Tue, 15 Nov 2016 14:55:39 -0800</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</guid>
+      <guid>//www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</guid>
       <description>Implementing a cache, even a basic one, used to require lots of architectural discussion, meetings, evaluations, and a significant amount of development time. With Spring Boot, those days are far behind us! With a small amount of configuration, dependency management, and a few annotations any developer can have caching set up in their application in a few minutes.
 Generating a new application Using either the Spring Boot CLI or the Spring Initializr, create a new application using the following (unless specified, use the defaults):</description>
     </item>
     
     <item>
       <title>About Me</title>
-      <link>https://www.stevegood.rocks/about/</link>
+      <link>//www.stevegood.rocks/about/</link>
       <pubDate>Tue, 11 Oct 2016 14:11:01 -0700</pubDate>
       
-      <guid>https://www.stevegood.rocks/about/</guid>
+      <guid>//www.stevegood.rocks/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Using Groovy to write Atlassian plugins</title>
-      <link>https://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</link>
+      <link>//www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</link>
       <pubDate>Tue, 27 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</guid>
+      <guid>//www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</guid>
       <description>Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation). But using Java can be overly verbose and less flexible than some other more modern languages. There are examples of writing plugins using Scala and JRuby out there but documentation for using Groovy seems to be a bit of a black hole. Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.</description>
     </item>
     
     <item>
       <title>Moving to GitHub Pages</title>
-      <link>https://www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</link>
+      <link>//www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</link>
       <pubDate>Wed, 17 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</guid>
+      <guid>//www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</guid>
       <description>Ghost + Pivotal CF = &amp;lt;3 Last year I moved my blog to Ghost and hosted it in Pivotal CF. This has been great so far but I&amp;rsquo;m starting to get twitchy about paying for an application to be running in PCF when I rarely update anything. This is my response to that concern.
 GitHub Pages There are a number of advantages to using GitHub Pages over a blogging application but for the most part I really like the price.</description>
     </item>
     
     <item>
       <title>So You Want to Learn to Program?</title>
-      <link>https://www.stevegood.rocks/post/2015/09/11/so-you-want-to-learn-to-program/</link>
+      <link>//www.stevegood.rocks/post/2015/09/11/so-you-want-to-learn-to-program/</link>
       <pubDate>Fri, 11 Sep 2015 20:33:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2015/09/11/so-you-want-to-learn-to-program/</guid>
+      <guid>//www.stevegood.rocks/post/2015/09/11/so-you-want-to-learn-to-program/</guid>
       <description>I get asked all the time on my stream which language someone should learn when they first get started. I typically start by asking what the end goal is. Want to build games? Websites? Desktop applications? The answer to that question will lead new developers in totally different directions. I recently found a pretty good infographic to help young developers choose a language that best suites their goals.</description>
     </item>
     
     <item>
       <title>Moving Forward and a Tiny Planet</title>
-      <link>https://www.stevegood.rocks/post/2013/06/04/moving-forward-and-a-tiny-planet/</link>
+      <link>//www.stevegood.rocks/post/2013/06/04/moving-forward-and-a-tiny-planet/</link>
       <pubDate>Tue, 04 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2013/06/04/moving-forward-and-a-tiny-planet/</guid>
+      <guid>//www.stevegood.rocks/post/2013/06/04/moving-forward-and-a-tiny-planet/</guid>
       <description>For the last two years I have been a full time contractor at KaiNexus serving as their Principal Architect. During this that time I made new friends and had the opportunity to work on a project that could leave a great positive mark on the world. However, as with all things, this chapter has come to a close. Starting this month I will be transitioning from KaiNexus to Cisco Systems.</description>
     </item>
     
     <item>
       <title>Simple URL Monitor Using Groovy and Twilio</title>
-      <link>https://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
+      <link>//www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
       <pubDate>Thu, 23 Aug 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
+      <guid>//www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
       <description>Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.
 To start, I set some minimal requirements for myself.
  Needs to be easy to write, can&amp;rsquo;t take more than an hour to build Needs to be easy to maintain, problems should be easy to find and fix Needs to be able to send SMS messages in case of outages Needs to be able to run standalone or on a server under cron  When looking at the requirements I had to think about what kind of scripting environment would be best served for the task.</description>
@@ -80,20 +80,20 @@ To start, I set some minimal requirements for myself.
     
     <item>
       <title>New KaiNexus Video</title>
-      <link>https://www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</link>
+      <link>//www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</link>
       <pubDate>Tue, 24 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</guid>
+      <guid>//www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</guid>
       <description>KaiNexus, the company where I am the Principal Architect, has just released our latest &amp;ldquo;Explainer&amp;rdquo; video. The new video includes 3 use cases and a bunch of screen grabs from the actual software. This video is quite exciting as I think it really shows what kinds of problems our software solves. Check it out!
  </description>
     </item>
     
     <item>
       <title>The Way Out</title>
-      <link>https://www.stevegood.rocks/post/2012/07/05/the-way-out/</link>
+      <link>//www.stevegood.rocks/post/2012/07/05/the-way-out/</link>
       <pubDate>Thu, 05 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/07/05/the-way-out/</guid>
+      <guid>//www.stevegood.rocks/post/2012/07/05/the-way-out/</guid>
       <description>Sometimes it is so easy to ignore the things around us that we see on a daily basis. The subject of this photo was no exception. This is a walkway at the office complex where I work 5 days a week and I never once thought to bring my camera and shoot it. A few days ago I decided to change that. Here are the results.
 
 SmugMug Grails Plugin Update A few weeks ago I mentioned that I was building a Grails plugin that aimed to wrap the SmugMug API.</description>
@@ -101,19 +101,19 @@ SmugMug Grails Plugin Update A few weeks ago I mentioned that I was building a G
     
     <item>
       <title>The Hallway</title>
-      <link>https://www.stevegood.rocks/post/2012/06/26/the-hallway/</link>
+      <link>//www.stevegood.rocks/post/2012/06/26/the-hallway/</link>
       <pubDate>Tue, 26 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/26/the-hallway/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/26/the-hallway/</guid>
       <description>There is a really interesting hallway at UT Southwestern Medical Center that just screamed &amp;ldquo;spooky&amp;rdquo; at me. I wanted to grab my camera and shoot some of the interesting angles and lines but I was a bit worried about offending patients and staff by walking around the hotel with camera and tripod in hand. As an alternative, I used my iPhone and captured the following video. I processed it a little bit in iMovie.</description>
     </item>
     
     <item>
       <title>Stone Steel and Glass</title>
-      <link>https://www.stevegood.rocks/post/2012/06/20/stone-steel-and-glass/</link>
+      <link>//www.stevegood.rocks/post/2012/06/20/stone-steel-and-glass/</link>
       <pubDate>Wed, 20 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/20/stone-steel-and-glass/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/20/stone-steel-and-glass/</guid>
       <description>This is the finished product of the image below. It was taken in downtown Fort Worth on my last photowalk research day. I was fascinated by the combination of glass, metal and concrete and the lines they formed. Normally, this is filled with flowing water but I got there just shortly after they turned everything off. I really dig the way everything looks even without the water.
 
 Brackets I saw a post on Google+ where someone posted a collage with the brackets used to make up one of their HDRs.</description>
@@ -121,19 +121,19 @@ Brackets I saw a post on Google+ where someone posted a collage with the bracket
     
     <item>
       <title>The Trumpets Sound</title>
-      <link>https://www.stevegood.rocks/post/2012/06/19/the-trumptes-sound/</link>
+      <link>//www.stevegood.rocks/post/2012/06/19/the-trumptes-sound/</link>
       <pubDate>Tue, 19 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/19/the-trumptes-sound/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/19/the-trumptes-sound/</guid>
       <description>Here is another shot I snapped while exploring Fort Worth and gathering info for my fall photowalk. This is on the side of Bass Performance Hall. The building and the angel are carved out of Texas limestone, which was quarried near Austin. You can read more about these amazing sculptures on Google Books.</description>
     </item>
     
     <item>
       <title>What Big Teeth you Have</title>
-      <link>https://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</link>
+      <link>//www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</link>
       <pubDate>Mon, 18 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/18/what-big-teeth-you-have/</guid>
       <description>I have been experimenting with a number of different photography techniques, one of those is the invisible black backdrop. Using this technique, I decided to follow my chihuahua around and generally annoy him with my flash. The result was a yawn captured at just the right moment. Isn&amp;rsquo;t he just so vicious?
 
 The SteveGood.org Repository Visualized A while back I found a really interesting utility for visualizing the activity of a Git repository.</description>
@@ -141,116 +141,116 @@ The SteveGood.org Repository Visualized A while back I found a really interestin
     
     <item>
       <title>Sundance Court</title>
-      <link>https://www.stevegood.rocks/post/2012/06/17/sundance-court/</link>
+      <link>//www.stevegood.rocks/post/2012/06/17/sundance-court/</link>
       <pubDate>Sun, 17 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/17/sundance-court/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/17/sundance-court/</guid>
       <description>Father&amp;rsquo;s Day To all the father&amp;rsquo;s out there, including my own, happy Father&amp;rsquo;s Day! Kids, if you know what&amp;rsquo;s good for you you&amp;rsquo;ll wait on dad hand and foot! No, really.
  Sundance Court I grabbed this shot while doing research for a future photowalk around Fort Worth. It was a little bit of a surprise for me since I found this on a street that was more of an alley.</description>
     </item>
     
     <item>
       <title>The Milk Silo</title>
-      <link>https://www.stevegood.rocks/post/2012/06/16/the-milk-silo/</link>
+      <link>//www.stevegood.rocks/post/2012/06/16/the-milk-silo/</link>
       <pubDate>Sat, 16 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/16/the-milk-silo/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/16/the-milk-silo/</guid>
       <description>Grunge + Portraits = Hours of Fun I started messing around with some techniques to add a feeling of grunge to a couple of the portraits in my library (nothing worth sharing yet) and found that I can&amp;rsquo;t get enough. I found a pretty good, if not fast, tutorial (below) on the basics of applying grunge to a photo. One thing to note, I don&amp;rsquo;t have one of the plugins this video uses but I was able to get the same effect by creating a new layer and desaurating it completely and messing around with the levels, curves and exposure.</description>
     </item>
     
     <item>
       <title>Some Kind of Date and Explore Fort Worth</title>
-      <link>https://www.stevegood.rocks/post/2012/06/15/some-kind-of-date-and-explore-fort-worth/</link>
+      <link>//www.stevegood.rocks/post/2012/06/15/some-kind-of-date-and-explore-fort-worth/</link>
       <pubDate>Fri, 15 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/15/some-kind-of-date-and-explore-fort-worth/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/15/some-kind-of-date-and-explore-fort-worth/</guid>
       <description>Explore Fort Worth Over the next few weekends I&amp;rsquo;ll be in or around downtown Fort Worth doing research for a photowalk. If you would like to join me be sure to follow me on Twitter or circle me on Google+ to get the details of where I will be and when I will be there.
 The first exploration will be June 15th 16th, 2012 at 5pm and I will be starting at the little park between Bluff St and Belknap (across from the court house) and working my way towards Sunset Square.</description>
     </item>
     
     <item>
       <title>Secrets</title>
-      <link>https://www.stevegood.rocks/post/2012/06/14/secrets/</link>
+      <link>//www.stevegood.rocks/post/2012/06/14/secrets/</link>
       <pubDate>Thu, 14 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/14/secrets/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/14/secrets/</guid>
       <description>Chromatic Aberrations The last round of photos that I processed really gave me an opportunity to hone my skill at removing chromatic aberrations, those pesky purple lines that plague so many digital photos. Thanks to a technique I saw on YouTube (below) I was able to take care of them without degrading the quality of the photo.
  Secrets Another photo taken at the Fort Worth Water Gardens. This was taken at the Quiet Pool just before sunset.</description>
     </item>
     
     <item>
       <title>Grails, SmugMug and My Latest Photo</title>
-      <link>https://www.stevegood.rocks/post/2012/06/13/grails-smugmug-and-my-latest-photo/</link>
+      <link>//www.stevegood.rocks/post/2012/06/13/grails-smugmug-and-my-latest-photo/</link>
       <pubDate>Wed, 13 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/13/grails-smugmug-and-my-latest-photo/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/13/grails-smugmug-and-my-latest-photo/</guid>
       <description>Well hello again internet, you&amp;rsquo;re looking good today I thought I would share a little bit about a project I&amp;rsquo;m working on. Since moving my blog over to Grails and Jelastic I&amp;rsquo;ve been making small and incremental changes. One of those recent changes brought about the beginnings of a Grails plugin for the SmugMug API. It&amp;rsquo;s not all the impressive yet, but I am now able to copy and paste an image url into the content of my posts and have it display that image inline with a link to the original.</description>
     </item>
     
     <item>
       <title>Grails Console Tip: Running BootStrap and Using Services</title>
-      <link>https://www.stevegood.rocks/post/2012/06/12/grails-console-tip-running-bootstrap-and-using-services/</link>
+      <link>//www.stevegood.rocks/post/2012/06/12/grails-console-tip-running-bootstrap-and-using-services/</link>
       <pubDate>Tue, 12 Jun 2012 17:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/06/12/grails-console-tip-running-bootstrap-and-using-services/</guid>
+      <guid>//www.stevegood.rocks/post/2012/06/12/grails-console-tip-running-bootstrap-and-using-services/</guid>
       <description>I use the Grails console pretty heavily during application development and thought I would share a couple of tips that will help reduce some frustrations and make for a more consistent development experience overall.
 Running BootStrap.groovy If you have ever used the console you may have noticed that the BootStrap is never executed. Sometimes this is a good thing as we may not want to wait for all the init routines to run.</description>
     </item>
     
     <item>
       <title>Grails and Bootstrap and Jelastic, Oh My!</title>
-      <link>https://www.stevegood.rocks/post/2012/05/24/grails-and-bootstrap-and-jelastic-oh-my/</link>
+      <link>//www.stevegood.rocks/post/2012/05/24/grails-and-bootstrap-and-jelastic-oh-my/</link>
       <pubDate>Thu, 24 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/05/24/grails-and-bootstrap-and-jelastic-oh-my/</guid>
+      <guid>//www.stevegood.rocks/post/2012/05/24/grails-and-bootstrap-and-jelastic-oh-my/</guid>
       <description>When the news that Posterous was purchased by Twitter I decided that this would be a great time for me to rebuild and move my blog. This is actually the first post on that new platform. The rest of this post details the technologies used.
 The application itself is written using Grails. For those who are not familiar, Grails is an application platform and framework that leverages technologies like Groovy (a Java abstraction language), Spring, a dynamic template engine and more.</description>
     </item>
     
     <item>
       <title>Uploading an image from iOS 5</title>
-      <link>https://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</link>
+      <link>//www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</link>
       <pubDate>Thu, 23 Feb 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</guid>
+      <guid>//www.stevegood.rocks/post/2012/02/23/uploading-an-image-from-ios-5/</guid>
       <description>Lately I&amp;rsquo;ve been working steadily towards getting an iOS app released for my company, KaiNexus. The first pass at this app will have the basic ability to submit an idea from your phone and be able to attach a picture. Since I am still a novice with Objective-C it was no surprise when I ran into a brick wall when trying to upload the image from the app. This prompted me to ask on stackoverflow to see what I had done wrong.</description>
     </item>
     
     <item>
       <title>Lion&#39;s Autosave and Versions support is Easy to Add</title>
-      <link>https://www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</link>
+      <link>//www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</link>
       <pubDate>Sun, 13 Nov 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</guid>
+      <guid>//www.stevegood.rocks/post/2011/11/13/lions-autosave-and-versions-support-is-easy-to-add/</guid>
       <description>I am currently working through an older Cocoa book and learning how to develop apps for the Mac. While building the sample that demonstrates saving and opening files I noticed that my little application was already taking advantage of Lion&amp;rsquo;s new autosave and versions support. I recorded a quick video showing how easy it was to add this support.
  </description>
     </item>
     
     <item>
       <title>Using Dropbox as a Distributed Backup</title>
-      <link>https://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</link>
+      <link>//www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</link>
       <pubDate>Sat, 22 Oct 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</guid>
+      <guid>//www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</guid>
       <description>A while back I made some improvements to the backup scheme we use at KaiNexus. The requirements were pretty simple and straight forward. All our backups had to be encrypted, offsite and distributed. While there are a number of for-pay backup solutions out there we were looking for the bare minimum and free solution.
 At the office, we all use Dropbox for file sharing so it seemed like a logical tool to use since we were all familiar with it.</description>
     </item>
     
     <item>
       <title>Sanitizing Lists of Email Addresses</title>
-      <link>https://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</link>
+      <link>//www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</link>
       <pubDate>Thu, 01 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</guid>
+      <guid>//www.stevegood.rocks/post/2009/10/01/sanitizing-lists-of-email-addresses/</guid>
       <description>I ran across an exception today where an email address was not being validated on submit or server side. Obviously this is something that needs to be done, but what about when you have a list of email addresses? The app I&amp;rsquo;m working on is old and lacks validation in most of the key areas. To combat this I created a method in a util object that will loop over a list of email addresses and validate each one by removing anything that does not match an email address structure.</description>
     </item>
     
     <item>
       <title>Replace Linked MP3 Files with an Audio Player Using jQuery</title>
-      <link>https://www.stevegood.rocks/post/2009/09/30/replace-linked-mp3-files-with-an-audio-player-using-jquery/</link>
+      <link>//www.stevegood.rocks/post/2009/09/30/replace-linked-mp3-files-with-an-audio-player-using-jquery/</link>
       <pubDate>Wed, 30 Sep 2009 17:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2009/09/30/replace-linked-mp3-files-with-an-audio-player-using-jquery/</guid>
+      <guid>//www.stevegood.rocks/post/2009/09/30/replace-linked-mp3-files-with-an-audio-player-using-jquery/</guid>
       <description>A client of mine posts links to recorded audio files in a blog like structure. Linking to the files doesn&amp;rsquo;t really create a great user experience and I decided to swap out the links with an embedded flash player to allow for instant playback while still providing a way for users to download the files.
 I chose the popular WordPress Audio Player and jQuery to assist me with this. The jQuery code is pretty straight forward.</description>
     </item>

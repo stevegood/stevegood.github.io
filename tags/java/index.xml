@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Steve Good</title>
-    <link>https://www.stevegood.rocks/tags/java/</link>
+    <link>//www.stevegood.rocks/tags/java/</link>
     <description>Recent content in Java on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Nov 2016 14:55:39 -0800</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Implementing Caffeine Cache with Spring Boot</title>
-      <link>https://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</link>
+      <link>//www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</link>
       <pubDate>Tue, 15 Nov 2016 14:55:39 -0800</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</guid>
+      <guid>//www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</guid>
       <description>Implementing a cache, even a basic one, used to require lots of architectural discussion, meetings, evaluations, and a significant amount of development time. With Spring Boot, those days are far behind us! With a small amount of configuration, dependency management, and a few annotations any developer can have caching set up in their application in a few minutes.
 Generating a new application Using either the Spring Boot CLI or the Spring Initializr, create a new application using the following (unless specified, use the defaults):</description>
     </item>

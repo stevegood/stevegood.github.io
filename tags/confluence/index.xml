@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Confluence on Steve Good</title>
-    <link>https://www.stevegood.rocks/tags/confluence/</link>
+    <link>//www.stevegood.rocks/tags/confluence/</link>
     <description>Recent content in Confluence on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 27 Sep 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/tags/confluence/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/tags/confluence/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using Groovy to write Atlassian plugins</title>
-      <link>https://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</link>
+      <link>//www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</link>
       <pubDate>Tue, 27 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</guid>
+      <guid>//www.stevegood.rocks/post/2016/09/27/using-groovy-to-write-atlassian-plugins/</guid>
       <description>Writing plugins for Atlassian products is pretty straight forward (once you get passed the insanely out-of-date documentation). But using Java can be overly verbose and less flexible than some other more modern languages. There are examples of writing plugins using Scala and JRuby out there but documentation for using Groovy seems to be a bit of a black hole. Since Groovy is my JVM language of choice, I have decided to document the process and give a simple example.</description>
     </item>
     

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Groovy on Steve Good</title>
-    <link>https://www.stevegood.rocks/tags/groovy/</link>
+    <link>//www.stevegood.rocks/tags/groovy/</link>
     <description>Recent content in Groovy on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Nov 2016 14:55:39 -0800</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/tags/groovy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Implementing Caffeine Cache with Spring Boot</title>
-      <link>https://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</link>
+      <link>//www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</link>
       <pubDate>Tue, 15 Nov 2016 14:55:39 -0800</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</guid>
+      <guid>//www.stevegood.rocks/post/2016/11/15/implementing-caffeine-cache-with-spring-boot/</guid>
       <description>Implementing a cache, even a basic one, used to require lots of architectural discussion, meetings, evaluations, and a significant amount of development time. With Spring Boot, those days are far behind us! With a small amount of configuration, dependency management, and a few annotations any developer can have caching set up in their application in a few minutes.
 Generating a new application Using either the Spring Boot CLI or the Spring Initializr, create a new application using the following (unless specified, use the defaults):</description>
     </item>
     
     <item>
       <title>Simple URL Monitor Using Groovy and Twilio</title>
-      <link>https://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
+      <link>//www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
       <pubDate>Thu, 23 Aug 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
+      <guid>//www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
       <description>Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.
 To start, I set some minimal requirements for myself.
  Needs to be easy to write, can&amp;rsquo;t take more than an hour to build Needs to be easy to maintain, problems should be easy to find and fix Needs to be able to send SMS messages in case of outages Needs to be able to run standalone or on a server under cron  When looking at the requirements I had to think about what kind of scripting environment would be best served for the task.</description>

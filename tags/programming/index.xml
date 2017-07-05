@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on Steve Good</title>
-    <link>https://www.stevegood.rocks/tags/programming/</link>
+    <link>//www.stevegood.rocks/tags/programming/</link>
     <description>Recent content in Programming on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 23 Aug 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Simple URL Monitor Using Groovy and Twilio</title>
-      <link>https://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
+      <link>//www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</link>
       <pubDate>Thu, 23 Aug 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
+      <guid>//www.stevegood.rocks/post/2012/08/23/simple-url-monitor-using-groovy-and-twilio/</guid>
       <description>Recently, the need arose for me to monitor a URL so that notifications could be sent out if the site was suddenly unavailable. Later on down the road this will need to evolve into a more proactive system rather than reactive but for now I am just focusing on site down notifications.
 To start, I set some minimal requirements for myself.
  Needs to be easy to write, can&amp;rsquo;t take more than an hour to build Needs to be easy to maintain, problems should be easy to find and fix Needs to be able to send SMS messages in case of outages Needs to be able to run standalone or on a server under cron  When looking at the requirements I had to think about what kind of scripting environment would be best served for the task.</description>
@@ -24,10 +24,10 @@ To start, I set some minimal requirements for myself.
     
     <item>
       <title>The Way Out</title>
-      <link>https://www.stevegood.rocks/post/2012/07/05/the-way-out/</link>
+      <link>//www.stevegood.rocks/post/2012/07/05/the-way-out/</link>
       <pubDate>Thu, 05 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/07/05/the-way-out/</guid>
+      <guid>//www.stevegood.rocks/post/2012/07/05/the-way-out/</guid>
       <description>Sometimes it is so easy to ignore the things around us that we see on a daily basis. The subject of this photo was no exception. This is a walkway at the office complex where I work 5 days a week and I never once thought to bring my camera and shoot it. A few days ago I decided to change that. Here are the results.
 
 SmugMug Grails Plugin Update A few weeks ago I mentioned that I was building a Grails plugin that aimed to wrap the SmugMug API.</description>

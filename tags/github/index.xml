@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on Steve Good</title>
-    <link>https://www.stevegood.rocks/tags/github/</link>
+    <link>//www.stevegood.rocks/tags/github/</link>
     <description>Recent content in Github on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 17 Aug 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/tags/github/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Moving to GitHub Pages</title>
-      <link>https://www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</link>
+      <link>//www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</link>
       <pubDate>Wed, 17 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</guid>
+      <guid>//www.stevegood.rocks/post/2016/08/17/moving-to-github-pages/</guid>
       <description>Ghost + Pivotal CF = &amp;lt;3 Last year I moved my blog to Ghost and hosted it in Pivotal CF. This has been great so far but I&amp;rsquo;m starting to get twitchy about paying for an application to be running in PCF when I rarely update anything. This is my response to that concern.
 GitHub Pages There are a number of advantages to using GitHub Pages over a blogging application but for the most part I really like the price.</description>
     </item>

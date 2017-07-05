@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kainexus on Steve Good</title>
-    <link>https://www.stevegood.rocks/tags/kainexus/</link>
+    <link>//www.stevegood.rocks/tags/kainexus/</link>
     <description>Recent content in Kainexus on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Jul 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/tags/kainexus/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/tags/kainexus/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>New KaiNexus Video</title>
-      <link>https://www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</link>
+      <link>//www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</link>
       <pubDate>Tue, 24 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</guid>
+      <guid>//www.stevegood.rocks/post/2012/07/24/new-kainexus-video/</guid>
       <description>KaiNexus, the company where I am the Principal Architect, has just released our latest &amp;ldquo;Explainer&amp;rdquo; video. The new video includes 3 use cases and a bunch of screen grabs from the actual software. This video is quite exciting as I think it really shows what kinds of problems our software solves. Check it out!
  </description>
     </item>

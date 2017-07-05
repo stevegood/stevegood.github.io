@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Steve Good</title>
-    <link>https://www.stevegood.rocks/tags/python/</link>
+    <link>//www.stevegood.rocks/tags/python/</link>
     <description>Recent content in Python on Steve Good</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Oct 2011 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.stevegood.rocks/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//www.stevegood.rocks/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using Dropbox as a Distributed Backup</title>
-      <link>https://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</link>
+      <link>//www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</link>
       <pubDate>Sat, 22 Oct 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</guid>
+      <guid>//www.stevegood.rocks/post/2011/10/22/using-dropbox-as-a-distributed-backup/</guid>
       <description>A while back I made some improvements to the backup scheme we use at KaiNexus. The requirements were pretty simple and straight forward. All our backups had to be encrypted, offsite and distributed. While there are a number of for-pay backup solutions out there we were looking for the bare minimum and free solution.
 At the office, we all use Dropbox for file sharing so it seemed like a logical tool to use since we were all familiar with it.</description>
     </item>
